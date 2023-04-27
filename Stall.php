@@ -43,13 +43,13 @@
             <ul class="list-unstyled components">
 
                 <li>
-                    <a href="index.html"><i class="fa fa-home"></i> Home</a>
+                    <a href="Index.php"><i class="fa fa-home"></i> Home</a>
                 </li>
                 <li class="active">
-                    <a href="stall.html"> <i class="fa fa-store"></i> Stalls</a>
+                    <a href="Stall.php"> <i class="fa fa-store"></i> Stalls</a>
                 </li>
                 <li>
-                    <a href="catagory.html"><i class="fa fa-list"></i> Category</a>
+                    <a href="Category.php"><i class="fa fa-list"></i> Category</a>
                 </li>
                 <li>
                     <a href="seller.html"><i class="fa fa-users"></i> Seller</a>
@@ -630,10 +630,10 @@
             </div>
 
             <!-- modal start -->
-            <div class="modal fade" id="addmodal" tabindex="-1" role="dialog"
-                aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
+                    <form method="Post" action="Add_stall.php"  class="modal-content">
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100 font-weight-bold">Add Stall</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -671,14 +671,12 @@
                                     </select>
                                 </div>
                             </div>
-
-
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
                             <button class="btn btn-success">Add</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <!-- modal end -->

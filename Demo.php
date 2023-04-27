@@ -53,7 +53,7 @@
                     <a href="" data-target="#tab1" data-toggle="tab"> <i class="fa fa-store"></i> Stalls</a>
                 </li>
                 <li>
-                    <a href="catagory.html"><i class="fa fa-list"></i> Category</a>
+                    <a href="Category.php"><i class="fa fa-list"></i> Category</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-users"></i> Seller</a>

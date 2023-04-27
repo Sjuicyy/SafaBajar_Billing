@@ -38,10 +38,10 @@
             <ul class="list-unstyled components">
 
                 <li class="active mx-auto">
-                    <a href="index.html"><i class="fa fa-home"></i> Home</a>
+                    <a href="Index.php"><i class="fa fa-home"></i> Home</a>
                 </li>
                 <li>
-                    <a href="stall.html"> <i class="fa fa-store"></i> Stalls</a>
+                    <a href="Stall.php"> <i class="fa fa-store"></i> Stalls</a>
                     <!-- <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
@@ -56,10 +56,10 @@
                     </ul> -->
                 </li>
                 <li>
-                    <a href="catagory.html"><i class="fa fa-list"></i> Category</a>
+                    <a href="Category.php"><i class="fa fa-list"></i> Category</a>
                 </li>
                 <li>
-                    <a href="seller.html"><i class="fa fa-users"></i> Seller</a>
+                    <a href="Seller.php"><i class="fa fa-users"></i> Seller</a>
                 </li>
                 <li>
                     <a href="#"> <i class="fa fa-file-invoice-dollar"></i> Billing</a>
@@ -121,7 +121,7 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="">
+                        <a href="Stall.php">
                             <div class="main-box">
                                 <i class="fa fa-store fa-5x"></i>
                                 <h5>Stalls</h5>
@@ -131,7 +131,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <a href="">
+                        <a href="Category.php">
                             <div class="main-box">
                                 <i class="fa fa-list fa-5x"></i>
                                 <h5>Categories</h5>
@@ -141,7 +141,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <a href="">
+                        <a href="Seller.php">
                             <div class="main-box">
                                 <i class="fa fa-users fa-5x"></i>
                                 <h5>Seller</h5>

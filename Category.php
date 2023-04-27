@@ -47,10 +47,10 @@
             <ul class="list-unstyled components">
 
                 <li>
-                    <a href="index.html"><i class="fa fa-home"></i> Home</a>
+                    <a href="Index.php"><i class="fa fa-home"></i> Home</a>
                 </li>
                 <li>
-                    <a href="stall.html"> <i class="fa fa-store"></i> Stalls</a>
+                    <a href="Stall.php"> <i class="fa fa-store"></i> Stalls</a>
                     <!-- <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
@@ -65,10 +65,10 @@
                     </ul> -->
                 </li>
                 <li class="active">
-                    <a href="catagory.html"><i class="fa fa-list"></i> Category</a>
+                    <a href="Category.php"><i class="fa fa-list"></i> Category</a>
                 </li>
                 <li>
-                    <a href="seller.html"><i class="fa fa-users"></i> Seller</a>
+                    <a href="Seller.php"><i class="fa fa-users"></i> Seller</a>
                 </li>
                 <li>
                     <a href="#"> <i class="fa fa-file-invoice-dollar"></i> Billing</a>
