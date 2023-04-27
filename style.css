@@ -1,0 +1,413 @@
+/*
+    DEMO STYLE
+*/
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    position: initial;
+    padding: 5px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 25px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-top {
+    z-index: 0;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+#sidebarCollapse {
+    background-color: #6dbe45;
+    color: white;
+}
+
+#sidebarCollapse:hover {
+    background-color: #b75ea4;
+    color: white;
+}
+
+.navtoggle {
+    background-color: #b75ea4;
+    color: white;
+}
+
+.nav .nav-item .nav-link:hover {
+    background-color: #6dbe45;
+    color: white;
+}
+
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+#sidebar {
+    width: 290px;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    height: 100vh;
+    z-index: 999;
+    background: white;
+    color: black;
+    transition: all 0.3s;
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: #6dbe45;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#dismiss:hover {
+    background-color: #b75ea4;
+    color: white;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px 10px 0;
+    background: white;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #b75ea4;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #6dbe45;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #6dbe45;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    /* background: #6d7fcc; */
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.cath2 {
+    border-bottom: 3px solid #6dbe45;
+}
+
+.main-box {
+    background-color: #6dbe45;
+    text-align: center;
+    height: 190px;
+    padding: 33px 8px 35px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.main-box:hover {
+    background-color: #63a841;
+    outline: 3px solid #b75ea4;
+}
+
+.main-box h5 {
+    padding-top: 8px;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.main-box p {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+table thead tr th {
+    text-align: center !important;
+}
+
+table thead tr td {
+    text-align: center !important;
+}
+
+
+
+
+
+
+
+
+
+.multiselect-container {
+    position: absolute;
+    list-style-type: none;
+    margin: 5px 0 0 0;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    -webkit-box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
+    -moz-box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
+    box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
+}
+
+.multiselect-container .input-group {
+    margin: 5px;
+}
+
+.multiselect-container>li {
+    padding: 0;
+    font-size: 14px;
+}
+
+.multiselect-container>li>a.multiselect-all label {
+    font-weight: 700;
+    color: gray;
+}
+
+.multiselect-container>li.multiselect-group label {
+    margin: 0;
+    padding: 3px 20px 3px 20px;
+    height: 100%;
+    font-weight: 700;
+}
+
+.multiselect-container>li.multiselect-group-clickable label {
+    cursor: pointer;
+}
+
+.multiselect-container>li>a {
+    padding: 5px 0;
+    color: #000;
+    display: block;
+}
+
+.multiselect-container>li>a>label {
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.multiselect-container>li>a>label:before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    height: 20px;
+    width: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background-color: transparent;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.multiselect-container>li.active>a>label:before {
+    font-family: 'fontAwesome';
+    content: "\f00c";
+    color: #fff;
+    background-color: #6dbe45;
+    border: 0;
+    display: inline-block;
+    padding: 0;
+    line-height: 1.2;
+    padding-left: 2px;
+}
+
+.multiselect-container>li>a>label.radio,
+.multiselect-container>li>a>label.checkbox {
+    margin: 0;
+}
+
+.multiselect-container>li>a>label>input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.btn-group>.btn-group:nth-child(2)>.multiselect.btn {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.form-inline .multiselect-container label.checkbox,
+.form-inline .multiselect-container label.radio {
+    padding: 3px 20px 3px 40px;
+}
+
+.form-inline .multiselect-container li a label.checkbox input[type=checkbox],
+.form-inline .multiselect-container li a label.radio input[type=radio] {
+    margin-left: -20px;
+    margin-right: 0;
+}
+
+.btn-group {
+    height: 43px;
+    width: 100%;
+    padding-right: 0% !important;
+}
+
+.btn-group button {
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #ced4da;
+    width: 100%;
+    -webkit-box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
+    -moz-box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
+    box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
+    padding: 0 10px;
+    text-align: left;
+    position: relative;
+}
+
+.btn-group button:after {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #999999;
+}
+
+.btn-group button:focus {
+    -webkit-box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
+    -moz-box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
+    box-shadow: 0px 10px 23px -16px rgba(0, 0, 0, 0.14);
+    padding: 0 10px;
+}
+
+.sl {
+   font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.md-form{
+    padding-top: 8px;
+}
