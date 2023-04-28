@@ -136,13 +136,22 @@
                                     while ($data = mysqli_fetch_array($result)) {
                                         ?>
                                         <tr>
-                                            <td> <?php echo $data["Id"] ?></td>
-                                            <td> <?php echo $data["Name"] ?></td>
-                                            <td> 
-                                                <img src="https://i0.wp.com/www.skabash.com/wp-content/uploads/2023/03/243045742_840977113240881_1727903750979743405_n.jpg?resize=940%2C1175&ssl=1" height="100px">
+                                            <td>
+                                                <?php echo $data["Id"] ?>
                                             </td>
-                                            <td> <?php echo $data["Contact"] ?></td>
-                                            <td> <?php echo $data["Address"] ?></td>
+                                            <td>
+                                                <?php echo $data["Name"] ?>
+                                            </td>
+                                            <td>
+                                                <img src="./SellerPhotos/<?php echo $data["Photo"] ?>"
+                                                    height="100px">
+                                            </td>
+                                            <td>
+                                                <?php echo $data["Contact"] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $data["Address"] ?>
+                                            </td>
                                             <td>
                                                 <button type="submit" class="btn btn-success" data-toggle="tooltip"
                                                     title="Add"><i class="fa-solid fa-plus fa-beat fa-lg"></i></button>
@@ -182,26 +191,26 @@
                         <div class="modal-body mx-3">
                             <div class="md-form">
                                 <label for="Name">Name: </label>
-                                <input type="text" id="Name" class="form-control" name="Name">
+                                <input required type="text" id="Name" class="form-control" name="Name">
                             </div>
                             <div class="md-form">
                                 <label for="Address">Address: </label>
-                                <input type="text" id="Address" class="form-control" name="Address">
+                                <input required type="text" id="Address" class="form-control" name="Address">
                             </div>
                             <div class="md-form">
                                 <label for="Contact">Contact </label>
-                                <input type="text" id="Contact" class="form-control" name="Contact">
+                                <input required type="text" id="Contact" class="form-control" name="Contact">
                             </div>
 
                             <div class="md-form">
                                 <label for="Photo">Photo: </label>
-                                <input type="file" class="form-control-file" id="Photo" name="Photo"
+                                <input required type="file" class="form-control-file" id="Photo" name="Photo"
                                     accept=".jpg, .jpeg, .png">
                             </div>
 
                             <div class="md-form">
                                 <label for="Citizenship">Citizenship: </label>
-                                <input type="file" class="form-control-file" id="Citizenship" name="Citizenship"
+                                <input required type="file" class="form-control-file" id="Citizenship" name="Citizenship"
                                     accept=".jpg, .jpeg, .png">
                             </div>
                         </div>
