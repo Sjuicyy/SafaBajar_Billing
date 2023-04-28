@@ -100,13 +100,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -137,56 +137,39 @@
                                 <tr>
                                     <th scope="col" colspan="2">No.</th>
                                     <th scope="col">Catagories</th>
+                                    <th scope="col">Rate</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                require_once 'Connection.php';
+                                $sql = "SELECT * from Category";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while ($data = mysqli_fetch_array($result)) {
+                                        ?>
+                                        <tr>
+                                            <th scope="row" colspan="2">
+                                                <?php echo $data["Id"] ?>
+                                            </th>
+                                            <td>
+                                                <?php echo $data["Title"] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $data["Rate"] ?>
+                                            </td>
+                                            <td >
+                                                <button type="submit" class="btn btn-success">Edit</button>
+                                               
+                                                <a href="Delete_category.php?id=<?php echo $data["Id"] ?>"> <input type="submit" value="Delete" class="btn btn-danger"></a>
 
-                                <tr>
-                                    <th scope="row" colspan="2">1</th>
-                                    <td>Rent</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success">Edit</button>
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row" colspan="2">2</th>
-                                    <td>Water</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success">Edit</button>
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row" colspan="2">3</th>
-                                    <td>Electricity</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success">Edit</button>
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row" colspan="2">4</th>
-                                    <td>Waste</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success">Edit</button>
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row" colspan="2">5</th>
-                                    <td>Security</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success">Edit</button>
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -197,7 +180,7 @@
             <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog"
                 aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                    <form method="POST" action="Add_category.php" class="modal-content">
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100 font-weight-bold">Add catagory</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -207,23 +190,23 @@
                         <div class="modal-body mx-3">
                             <div class="md-form">
                                 <label data-error="wrong" data-success="right" for="catName">Catagory Name: </label>
-                                <input type="text" id="catName" class="form-control" name="CatagoryName">
+                                <input type="text" id="catName" class="form-control" name="CatagoryName" required>
+                            </div>
+                            <div class="md-form">
+                                <label data-error="wrong" data-success="right" for="catName">Default Price </label>
+                                <input type="text" id="catName" class="form-control" name="DefaultPrice" required>
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button class="btn btn-success">Add</button>
+                            <button class="btn w-100 btn-success">Add</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <!-- modal end -->
-
-
         </div>
 
         <div class="overlay"></div>
-
-
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
             integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
@@ -237,7 +220,8 @@
             crossorigin="anonymous"></script>
 
         <!-- jQuery Custom Scroller CDN -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
         <script src="script.js"></script>
 </body>

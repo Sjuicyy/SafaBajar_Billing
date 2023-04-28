@@ -83,13 +83,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -120,39 +120,48 @@
                             <thead>
                                 <tr>
                                     <th>S.N.</th>
-                                    <th>Photo</th>
                                     <th>Name</th>
+                                    <th>Photo</th>
                                     <th>Contact</th>
                                     <th>Address</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                require_once("Connection.php");
+                                $sql = "SELECT * from Seller";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while ($data = mysqli_fetch_array($result)) {
+                                        ?>
+                                        <tr>
+                                            <td> <?php echo $data["Id"] ?></td>
+                                            <td> <?php echo $data["Name"] ?></td>
+                                            <td> 
+                                                <img src="https://i0.wp.com/www.skabash.com/wp-content/uploads/2023/03/243045742_840977113240881_1727903750979743405_n.jpg?resize=940%2C1175&ssl=1" height="100px">
+                                            </td>
+                                            <td> <?php echo $data["Contact"] ?></td>
+                                            <td> <?php echo $data["Address"] ?></td>
+                                            <td>
+                                                <button type="submit" class="btn btn-success" data-toggle="tooltip"
+                                                    title="Add"><i class="fa-solid fa-plus fa-beat fa-lg"></i></button>
 
-                                <tr>
-                                    <th>1</th>
-                                    <td></td>
-                                    <td>Bijen Shrestha</td>
-                                    <td>9861437111</td>
-                                    <td>Bhaktapur</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Add"><i class="fa-solid fa-plus fa-beat fa-lg"></i></button>
-
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-info" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-
-
-
+                                                <button type="submit" class="btn btn-warning" data-toggle="tooltip"
+                                                    title="Edit"><i
+                                                        class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
+                                                <button type="submit" class="btn btn-primary" data-toggle="tooltip"
+                                                    title="Transfer"><i
+                                                        class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
+                                                <button type="submit" class="btn btn-info" data-toggle="tooltip"
+                                                    title="Report"><i
+                                                        class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -163,7 +172,7 @@
             <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
+                    <form method="POST" action="Add_seller.php" class="modal-content" enctype='multipart/form-data'>
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100 font-weight-bold">Add Seller</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -173,37 +182,34 @@
                         <div class="modal-body mx-3">
                             <div class="md-form">
                                 <label for="Name">Name: </label>
-                                <input type="text" id="Name" class="form-control" name="CatagoryName">
+                                <input type="text" id="Name" class="form-control" name="Name">
                             </div>
                             <div class="md-form">
                                 <label for="Address">Address: </label>
-                                <input type="text" id="Address" class="form-control" name="CatagoryName">
+                                <input type="text" id="Address" class="form-control" name="Address">
                             </div>
                             <div class="md-form">
                                 <label for="Contact">Contact </label>
-                                <input type="text" id="Contact" class="form-control" name="CatagoryName">
+                                <input type="text" id="Contact" class="form-control" name="Contact">
                             </div>
 
                             <div class="md-form">
                                 <label for="Photo">Photo: </label>
-                                <input type="file" class="form-control-file" id="Photo" accept=".jpg, .jpeg, .png">
+                                <input type="file" class="form-control-file" id="Photo" name="Photo"
+                                    accept=".jpg, .jpeg, .png">
                             </div>
 
                             <div class="md-form">
                                 <label for="Citizenship">Citizenship: </label>
-                                <input type="file" class="form-control-file" id="Citizenship"
+                                <input type="file" class="form-control-file" id="Citizenship" name="Citizenship"
                                     accept=".jpg, .jpeg, .png">
                             </div>
-
-
-
-
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             <button class="btn btn-success">Add</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <!-- modal end -->

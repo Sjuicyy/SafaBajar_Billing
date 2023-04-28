@@ -83,13 +83,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -633,7 +633,7 @@
             <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
-                    <form method="Post" action="Add_stall.php"  class="modal-content">
+                    <form method="POST" action="Add_stall.php"  class="modal-content">
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100 font-weight-bold">Add Stall</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">

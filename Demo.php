@@ -93,7 +93,7 @@
                                 <a href="#tab2" class="nav-link"  data-toggle="tab">bvvbv</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
