@@ -52,7 +52,7 @@
                     <a href="Category.php"><i class="fa fa-list"></i> Category</a>
                 </li>
                 <li>
-                    <a href="seller.html"><i class="fa fa-users"></i> Seller</a>
+                    <a href="seller.php"><i class="fa fa-users"></i> Seller</a>
                 </li>
                 <li>
                     <a href="#"> <i class="fa fa-file-invoice-dollar"></i> Billing</a>

@@ -114,6 +114,8 @@
                             <h2 class="cath2">Sellers</h2>
                             <button class="btn btn-success" data-toggle="modal" data-target="#addmodal"><i
                                     class="fa fa-circle-plus fa-1x"></i> Add</button>
+
+
                         </div>
 
                         <table id="myTable" class="text-center">
@@ -133,8 +135,12 @@
                                 $sql = "SELECT * from Seller";
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
+
                                     while ($data = mysqli_fetch_array($result)) {
                                         ?>
+
+
+
                                         <tr>
                                             <td>
                                                 <?php echo $data["Id"] ?>
@@ -143,21 +149,21 @@
                                                 <?php echo $data["Name"] ?>
                                             </td>
                                             <td>
-                                                <img src="./SellerPhotos/<?php echo $data["Photo"] ?>"
-                                                    height="100px">
+                                                <img src="./SellerPhotos/<?php echo $data["Photo"] ?>" height="100px">
                                             </td>
                                             <td>
                                                 <?php echo $data["Contact"] ?>
                                             </td>
                                             <td>
+
                                                 <?php echo $data["Address"] ?>
                                             </td>
                                             <td>
                                                 <button type="submit" class="btn btn-success" data-toggle="tooltip"
                                                     title="Add"><i class="fa-solid fa-plus fa-beat fa-lg"></i></button>
 
-                                                <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                                    title="Edit"><i
+                                                <button type="submit" class="btn btn-warning" data-toggle="modal"
+                                                    data-target='#addmodal<?php echo $data["Id"] ?>' title="Edit"><i
                                                         class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
                                                 <button type="submit" class="btn btn-primary" data-toggle="tooltip"
                                                     title="Transfer"><i
@@ -165,19 +171,102 @@
                                                 <button type="submit" class="btn btn-info" data-toggle="tooltip"
                                                     title="Report"><i
                                                         class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
+                                                <a href="Delete_user.php?id=<?php echo $data["Id"] ?>">
+                                                <button class="btn btn-danger">Delete</button>
+                                                </a>
                                             </td>
                                         </tr>
-                                        <?php
+                                    </tbody>
+                                    <?php
                                     }
+
                                 }
+
                                 ?>
-                            </tbody>
                         </table>
+
+
+
+
+
                     </div>
                 </div>
             </div>
 
-            <!-- modal start -->
+
+            <?php
+            require_once("Connection.php");
+            $sql = "SELECT * from Seller";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+
+                while ($data = mysqli_fetch_array($result)) {
+                    ?>
+                    <!-- modal start -->
+                    <div class="modal fade" id="addmodal<?php echo $data["Id"] ?>" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered " role="document">
+                            <form method="POST" action="Edit_seller.php?id=<?php echo $data["Id"]; ?>" class="modal-content"
+                                enctype='multipart/form-data'>
+                                <div class="modal-header text-center">
+                                    <h4 class="modal-title w-100 font-weight-bold">Edit Seller</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body mx-3">
+                                    <div class="md-form">
+                                        <label for="Name">Name: </label>
+
+                                        <!-- <input type="hidden" name="id" value="<?php echo $data["id"]; ?>" -->
+                                        <input required111 type="text" id="Name" value=" <?php echo $data["Name"] ?>"
+                                            class="form-control" name="Name">
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="Address">Address: </label>
+                                        <input required111 type="text" id="Address" value=" <?php echo $data["Address"] ?>"
+                                            class="form-control" name="Address">
+                                    </div>
+                                    <div class="md-form">
+                                        <label for="Contact">Contact </label>
+                                        <input required111 type="text" id="Contact" class="form-control" name="Contact">
+                                    </div>
+
+                                    <div class="md-form">
+                                        <label for="Photo">Photo: </label>
+                                        <input type="hidden" name="noimage" value="<?php echo $data["Name"] ?>"">
+                                        <input required111 type=" file" class="form-control-file" id="Photo"
+                                            name="Photo" accept=".jpg, .jpeg, .png">
+                                    </div>
+
+                                    <div class="md-form">
+                                        <label for="Citizenship">Citizenship: </label>
+                                        <input type="hidden" name="noimage" value="<?php echo $data["Citizenship"] ?>"">
+                                        <input required111 type=" file" class="form-control-file" id="Citizenship"
+                                            name="Citizenship" alt="aaa" accept=".jpg, .jpeg, .png">
+                                    </div>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-success">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- modal end -->
+
+
+
+
+                    <?php
+                }
+
+            }
+
+            ?>
+
+
+
             <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -210,8 +299,8 @@
 
                             <div class="md-form">
                                 <label for="Citizenship">Citizenship: </label>
-                                <input required type="file" class="form-control-file" id="Citizenship" name="Citizenship"
-                                    accept=".jpg, .jpeg, .png">
+                                <input required type="file" class="form-control-file" id="Citizenship"
+                                    name="Citizenship" accept=".jpg, .jpeg, .png">
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
@@ -222,6 +311,16 @@
                 </div>
             </div>
             <!-- modal end -->
+
+
+
+
+
+
+
+
+
+
         </div>
 
         <div class="overlay"></div>
