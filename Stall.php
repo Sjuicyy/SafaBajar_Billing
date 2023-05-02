@@ -105,8 +105,6 @@
                     </div>
                 </div>
             </nav>
-
-
             <div class="container">
                 <div class="row d-flex justify-content-center align-items-center">
                     <div class="col-lg-8 col-md-12 col-sm-12 ">
@@ -121,508 +119,40 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Name</th>
+                                    <th>Categories</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                <tr>
-                                    <th>1</th>
-                                    <td>A11</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>2</th>
-                                    <td>A12</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>3</th>
-                                    <td>A13</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>4</th>
-                                    <td>A14</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>A15</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            title="Edit"><i
-                                                class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            title="Transfer"><i
-                                                class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                            title="Report"><i
-                                                class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
-                                    </td>
-                                </tr>
-
-
+                                <?php
+                                require_once("Connection.php");
+                                $sql = "select * from Stall";
+                                $result = mysqli_query($conn, $sql);
+                                if ($result->num_rows > 0) {
+                                    while ($data = mysqli_fetch_array($result)) {
+                                        ?>
+                                        <tr>
+                                            <th>2</th>
+                                            <td>A12</td>
+                                            <td>
+                                                Rent,Water,Security,Waste,Electricity,
+                                            </td>
+                                            <td>
+                                                <button type="submit" class="btn btn-success" data-toggle="tooltip"
+                                                    title="Edit"><i
+                                                        class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
+                                                <button type="submit" class="btn btn-warning" data-toggle="tooltip"
+                                                    title="Transfer"><i
+                                                        class="fa-solid fa-arrow-right-arrow-left fa-beat fa-lg"></i></button>
+                                                <button type="submit" class="btn btn-primary" data-toggle="tooltip"
+                                                    title="Report"><i
+                                                        class="fa-sharp fa-solid fa-file-lines fa-beat fa-lg"></i></button>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -633,7 +163,7 @@
             <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
-                    <form method="POST" action="Add_stall.php"  class="modal-content">
+                    <form method="POST" action="Add_stall.php" class="modal-content">
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100 font-weight-bold">Add Stall</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">

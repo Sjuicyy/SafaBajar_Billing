@@ -1,8 +1,8 @@
 <?php
 require_once('Connection.php');
-$Name = ucwords($_POST['Name']);
-$Contact = $_POST['Contact'];
-$Address = ucwords($_POST['Address']);
+echo $Name = ucwords($_POST['Name']);
+echo $Contact = $_POST['Contact'];
+echo $Address = ucwords($_POST['Address']);
 
 
 
@@ -24,7 +24,9 @@ if (move_uploaded_file($_FILES['Photo']['tmp_name'], $SellerFolder)) {
 
 
 $FileCitizen = $_FILES['Citizenship'];
-$FileCitizen["name"] = mt_rand(1, 100000000000000000) . ".jpg";    //Rename name of received file
+// $FileCitizen["name"] = mt_rand(1, 100000000000000000) . ".jpg";    //Rename name of received file
+$FileCitizen["name"] = $Photo;    //For same file name of citizenship and photo
+
 $Citizenship = $FileCitizen["name"];  // Assigned new file name to variable
 
 
