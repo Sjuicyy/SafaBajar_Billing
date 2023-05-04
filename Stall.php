@@ -119,7 +119,9 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Name</th>
+                                    <th>Owner</th>
                                     <th>Categories</th>
+                                    <th>Rate</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -132,12 +134,22 @@
                                     while ($data = mysqli_fetch_array($result)) {
                                         ?>
                                         <tr>
-                                            <th>2</th>
-                                            <td>A12</td>
+                                            <th>
+                                                <?php echo $data["Id"] ?>
+                                            </th>
                                             <td>
-                                                Rent,Water,Security,Waste,Electricity,
+                                                <?php echo $data["Name"] ?>
+                                            </td>
+                                            <th>
+                                                <?php echo $data["Seller_id"] ?>
+                                            </th>
+                                            <td>
+                                                <?php echo $data["Category"] ?>
                                             </td>
                                             <td>
+                                                <?php echo $data["Rate"] ?>
+                                            </td>
+                                            <td class="d-flex justify-content-around">
                                                 <button type="submit" class="btn btn-success" data-toggle="tooltip"
                                                     title="Edit"><i
                                                         class="fa-solid fa-pen-to-square fa-beat fa-lg"></i></button>
@@ -158,9 +170,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- modal start -->
-            <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            <div class="modal1 fade1" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <form method="POST" action="Add_stall.php" class="modal-content">
@@ -173,15 +184,13 @@
                         <div class="modal-body mx-3">
                             <div class="md-form">
                                 <label data-error="wrong" data-success="right" for="catName">Stall Name: </label>
-                                <input type="text" id="catName" class="form-control" name="CatagoryName">
+                                <input required type="text" id="catName" class="form-control" name="Stall_name">
                             </div>
-
-
                             <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
                                 <div>
                                     <strong class="sl d-block">Select Catagories:</strong>
-                                    <select id="multiple-checkboxes" multiple>
-                                        <option name="value" value="Rent">Rent</option>
+                                    <select  name="Category[]" id="multiple-checkboxes" multiple>
+                                        <option value="Rent">Rent</option>
                                         <option value="Water">Water</option>
                                         <option value="Electricity">Electricity</option>
                                         <option value="Waste">Waste</option>
@@ -189,6 +198,33 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
+                                <strong class="sl d-block">Select Seller:</strong>
+                                <select id="multiple-checkboxes" class="w-100" name="Seller_id">
+                                    <option type="checkbox" value="SafaBajar Pvt. Ltd.">
+                                        SafaBajar Pvt. Ltd.
+                                    </option>
+                                    <?php
+                                    require_once("Connection.php");
+                                    $sql = "select * from Seller";
+                                    $result = mysqli_query($conn, $sql);
+                                    if ($result->num_rows > 0) {
+                                        while ($data = mysqli_fetch_array($result)) {
+                                            ?>
+                                            <option type="checkbox" value="<?php echo $data["Id"] ?>">
+                                                <?php echo $data["Name"] . " (" . $data["Contact"] . ")" ?>
+                                            </option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <input type="text" name="Rent" value=""> Rent <br>
+                            <input type="text" name="Water" value="" /> Water <br>
+                            <input type="text" name="Electrical" value="" /> electrical <br>
+                            <input type="text" name="Waste" value="" /> waste <br>
+                            <input type="text" name="Security" value="" /> security <br>
                             <div class="modal-footer d-flex justify-content-center">
                                 <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 <button class="btn btn-success">Add</button>
@@ -198,9 +234,7 @@
             </div>
             <!-- modal end -->
         </div>
-
         <div class="overlay"></div>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
             integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
