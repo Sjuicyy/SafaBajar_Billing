@@ -176,24 +176,12 @@
                                 <input type="text" id="catName" class="form-control" name="CatagoryName">
                             </div>
 
-                            <!-- <div class="input-group mt-3">
-                                <select class="form-select" multiple>
-                                  <option selected>Choose...</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
-                                </select>
-                                <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary" type="button">Button</button>
-                                </div>
-                              </div> -->
-
 
                             <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
                                 <div>
                                     <strong class="sl d-block">Select Catagories:</strong>
-                                    <select id="multiple-checkboxes" multiple="multiple">
-                                        <option value="Rent">Rent</option>
+                                    <select id="multiple-checkboxes" multiple>
+                                        <option name="value" value="Rent">Rent</option>
                                         <option value="Water">Water</option>
                                         <option value="Electricity">Electricity</option>
                                         <option value="Waste">Waste</option>
@@ -201,11 +189,10 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button class="btn btn-success">Add</button>
-                        </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button class="btn btn-success">Add</button>
+                            </div>
                     </form>
                 </div>
             </div>
@@ -240,18 +227,15 @@
                 });
             });
         </script>
-
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
-
         <!-- jQuery Custom Scroller CDN -->
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
         <script src="js/bootstrap-multiselect.js"></script>
         <script src="script.js"></script>
 
