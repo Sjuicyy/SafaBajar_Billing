@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
 
-</head>
 
 <body>
     <div class="wrapper">
@@ -123,7 +122,7 @@
                                     <th>Name</th>
                                     <th>Owner</th>
                                     <th>Type</th>
-                                    <th>Category</th>
+                                    <th>Action</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -152,26 +151,36 @@
                                                 <?php echo $data["Type"] ?>
                                             </td>
                                             <td class="d-flex justify-content-end">
-                                                <a href="Show_category.php?id=<?php echo $data["Name"] ?>">
-                                                    <button type="submit" class="btn btn-sm btn-success" data-toggle="tooltip"
-                                                        title="Edit"><i
-                                                            class="fa-solid fa-pen-to-square  fa-lg"></i></button>
-                                                    <button type="submit" class="btn btn-sm btn-warning" data-toggle="tooltip"
-                                                        title="Transfer"><i
-                                                            class="fa-solid fa-arrow-right-arrow-left  fa-lg"></i></button>
-                                                    <button type="submit" class="btn btn-sm btn-primary" data-toggle="tooltip"
-                                                        title="Report"><i
-                                                            class="fa-sharp fa-solid fa-file-lines  fa-lg"></i></button>
-                                                </a>
+                                                <button type="submit" data-toggle="modal" data-target="#editCategory<?php echo $data["Name"] ?>"
+                                                    class="btn btn-sm mx-1 btn-success" data-toggle="tooltip" title="Edit"><i
+                                                        class="fa-solid fa-pen-to-square  fa-lg"></i></button>
+
+                                                <button type="submit" data-toggle="modal"
+                                                    data-target="#transferModal<?php echo $data["Name"] ?>"
+                                                    class="btn btn-sm mx-1 btn-warning" data-toggle="tooltip"
+                                                    title="Transfer"><i
+                                                        class="fa-solid fa-arrow-right-arrow-left  fa-lg"></i></button>
+                                                <button type="submit" class="btn btn-sm mx-1 btn-primary" data-toggle="tooltip"
+                                                    title="Report"><i
+                                                        class="fa-sharp fa-solid fa-file-lines  fa-lg"></i></button>
                                             </td>
                                             <td>
                                                 <button class="btn btn-sm btn-primary" data-toggle="modal"
                                                     data-target="#showCategory<?php echo $data["Name"] ?>">View</button>
                                             </td>
                                         </tr>
+
+
+
+
+
+                                        <!-- Category view modal  Start-->
+
+
+
                                         <div class="modal fade" id="showCategory<?php echo $data["Name"] ?>" tabindex="-1"
                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-dialog " role="document">
                                                 <div class="modal-content">
 
                                                     <div class="modal-header text-center">
@@ -228,6 +237,174 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- Category view modal  end -->
+
+
+
+                                        <!-- Edit  modal  end -->
+
+
+
+
+
+
+                                        <div class="modal fade" id="editCategory<?php echo $data["Name"] ?>" tabindex="-1"
+                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog " role="document">
+                                                <div class="modal-content">
+
+                                                    <div class="modal-header text-center">
+                                                        <div>
+                                                            <h4 class="modal-title w-100 d-flex font-weight-bold">Stall :
+                                                                <?php echo $data['Name'] ?>
+                                                            </h4>
+                                                            <h6 class="d-flex justify-content-start">
+                                                                <?php echo $data['Seller_name'] ?>
+                                                            </h6>
+                                                        </div>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="row  px-5 ">
+                                                        <div class="col-6 my-1 bg-secondary ">
+                                                            Category
+                                                        </div>
+                                                        <div class="col-6 my-1 bg-secondary ">
+                                                            Rate
+                                                        </div>
+                                                        <?php
+                                                        $sql_cat = "SELECT * FROM Category";
+                                                        $result_cat = mysqli_query($conn, $sql_cat);
+                                                        while ($data_cat = mysqli_fetch_assoc($result_cat)) {
+                                                            $Category = $data_cat['Title'];
+                                                            ?>
+                                                            <div class="col-6 my-2">
+                                                                <?php echo $data_cat['Title']; ?>
+                                                            </div>
+                                                            <div class="col-6 my-2">
+                                                                <?php
+                                                                $sql1 = "SELECT * FROM `Stall` WHERE `Name`='$Stall_Name' AND `Category`='$Category'";
+                                                                $result1 = mysqli_query($conn, $sql1);
+                                                                $data1 = mysqli_fetch_assoc($result1);
+                                                                ?>
+                                                                <?php if ($data1['Rate'] == !null) {
+                                                                    echo " <div class='d-flex'><p class='h6 d-flex mx-1 text-center'> Rs. </p>" . "<p class='h6 text-center'>" . $data1['Rate'] . "</p> </div> ";
+                                                                } else {
+                                                                    echo " <div class='d-flex'><p class='h6 d-flex mx-1 text-center'> Rs. </p>" . "<p class='h6 text-center'>" . 0 . "</p> </div> ";
+
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-center">
+                                                        <button class="btn w-50 btn-success">Edit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        <!-- Edit  modal  end -->
+
+
+
+
+
+
+
+
+
+
+                                        <!-- Transfer  modal  end -->
+
+
+
+                                        <div class="modal fade" id="transferModal<?php echo $data["Name"] ?>" tabindex="-1"
+                                            role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <h4 class="modal-title text-center mt-2 w-100 font-weight-bold">Transfer
+                                                        Stall</h4>
+
+                                                    <div class="modal-header text-center">
+                                                        <div>
+                                                            <h4 class="modal-title w-100 d-flex font-weight-bold">Stall :
+                                                                <?php echo $data['Name'] ?>
+                                                            </h4>
+                                                            <h6 class="d-flex justify-content-start">
+                                                                <?php echo $data['Seller_name'] ?>
+                                                            </h6>
+                                                        </div>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="Stall_transfer.php" method="POST">
+                                                        <div class="modal-body mx-3">
+                                                            <div class="md-form">
+                                                                <label data-error="wrong" data-success="right"
+                                                                    for="catName">Current
+                                                                    Owner: </label>
+                                                                <input type="text" id="catName"
+                                                                    value="<?php echo $data['Seller_name'] ?>"
+                                                                    class="form-control" name="CatagoryName" disabled>
+                                                            </div>
+                                                            <div class="md-form">
+                                                                <label data-error="wrong" data-success="right" for="catName">New
+                                                                    Owner </label>
+                                                                <input type="hidden" value="<?php echo $data['Name'] ?>"
+                                                                    name="Stall_name">
+                                                                <select id="multiple-checkboxes" class="w-100 custom-select"
+                                                                    name="New_owner">
+
+                                                                    <?php
+                                                                    $sql0 = "select * from Seller";
+                                                                    $result0 = mysqli_query($conn, $sql0);
+                                                                    if ($result0->num_rows > 0) {
+                                                                        while ($data0 = mysqli_fetch_array($result0)) {
+                                                                            ?>
+                                                                            <option value="<?php echo $data0["Id"] ?>"> <?php echo $data0["Name"] . " (" . $data0["Contact"] . ")" ?>
+                                                                            </option>
+                                                                            <?php
+                                                                        }
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer d-flex justify-content-center">
+                                                            <button data-dismiss="modal" class="btn w-50 p-2 btn-danger">
+                                                                Cancel
+                                                            </button>
+                                                            <button class="btn w-50 p-2 btn-success">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Transfer modal  end -->
                                         <?php
                                     }
                                 }
@@ -237,23 +414,7 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- modal start -->
+            <!--Add Stall modal start -->
             <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -310,7 +471,7 @@
 
 
                             <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
-                                <strong class="sl d-block">Select Seller:</strong>
+                                <strong class="sl d-block">Type:</strong>
                                 <select id="multiple-checkboxes" class="w-100" name="Type">
                                     <option value="None">None</option>
                                     <option value="Fruits">Fruits</option>
@@ -322,8 +483,8 @@
 
 
                             <div class="modal-footer d-flex justify-content-center">
-                                <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <button class="btn btn-success">Add</button>
+                                <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Add</button>
                             </div>
                     </form>
                 </div>

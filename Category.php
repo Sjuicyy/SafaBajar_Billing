@@ -166,6 +166,52 @@
                                                         value="Delete" class="btn btn-danger"></a>
                                             </td>
                                         </tr>
+
+
+
+
+
+
+                                        <!--Edit modal start -->
+                                        <div class="modal fade" id="Cat_edit<?php echo $data["Id"] ?>" tabindex="-1"
+                                            role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog  bg-light" role="document">
+                                                <div class="modal-content">
+
+                                                <form method="POST" action="Edit_category.php?id=<?php echo $data["Id"] ?>"
+                                                    >
+                                                    <div class="modal-header text-center">
+                                                        <h4 class="modal-title w-100 font-weight-bold">Edit catagory</h4>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body mx-3">
+                                                        <div class="md-form">
+                                                            <label data-error="wrong" data-success="right"
+                                                                for="catName">Catagory Name: </label>
+                                                            <input type="text" id="catName" class="form-control"
+                                                                name="CatagoryName" value="<?php echo $data["Title"] ?>"
+                                                                required>
+                                                        </div>
+                                                        <div class="md-form">
+                                                            <label data-error="wrong" data-success="right" for="catName">Default
+                                                                Price </label>
+                                                            <input type="number" id="catName" class="form-control"
+                                                                name="DefaultPrice" value="<?php echo $data["Rate"] ?>"
+                                                                required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-center">
+                                                        <button type="submit" class="btn w-100 btn-success">Update</button>
+                                                    </div>
+                                                </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!--Edit modal end -->
                                         <?php
                                     }
                                 }
@@ -175,48 +221,8 @@
                     </div>
                 </div>
             </div>
-            <?php
-            require_once 'Connection.php';
-            $sql = "SELECT * from Category";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while ($data = mysqli_fetch_array($result)) {
-                    ?>
-                    <!--Edit modal start -->
-                    <div class="modal fade" id="Cat_edit<?php echo $data["Id"] ?>" tabindex="-1" role="dialog"
-                        aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog  bg-light" role="document">
-                            <form method="POST" action="Edit_category.php?id=<?php echo $data["Id"] ?>" class="modal-content">
-                                <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">Edit catagory</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body mx-3">
-                                    <div class="md-form">
-                                        <label data-error="wrong" data-success="right" for="catName">Catagory Name: </label>
-                                        <input type="text" id="catName" class="form-control" name="CatagoryName"
-                                            value="<?php echo $data["Title"] ?>" required>
-                                    </div>
-                                    <div class="md-form">
-                                        <label data-error="wrong" data-success="right" for="catName">Default
-                                            Price </label>
-                                        <input type="number" id="catName" class="form-control" name="DefaultPrice"
-                                            value="<?php echo $data["Rate"] ?>" required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="submit" class="btn w-100 btn-success">Update</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!--Edit modal end -->
-                    <?php
-                }
-            }
-            ?>
+          
+            
             <!--Add modal start -->
             <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog"
                 aria-labelledby="myModalLabel" aria-hidden="true">

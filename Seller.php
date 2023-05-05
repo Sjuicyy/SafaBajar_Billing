@@ -159,9 +159,9 @@
                                                 <?php echo $data["Address"] ?>
                                             </td>
                                             <td>
-                                                <button type="submit" class="btn btn-warning" data-toggle="modal" data-toggle="tooltip"
-                                                    data-target='#addmodal<?php echo $data["Id"] ?>' title="Edit"><i
-                                                        class="fa-solid fa-pen-to-square fa-lg"></i></button>
+                                                <button type="submit" class="btn btn-warning" data-toggle="modal"
+                                                    data-toggle="tooltip" data-target='#addmodal<?php echo $data["Id"] ?>'
+                                                    title="Edit"><i class="fa-solid fa-pen-to-square fa-lg"></i></button>
                                                 <button type="submit" class="btn btn-primary" data-toggle="tooltip"
                                                     title="Transfer"><i
                                                         class="fa-solid fa-arrow-right-arrow-left fa-lg"></i></button>
@@ -174,6 +174,79 @@
                                             </td>
                                         </tr>
                                     </tbody>
+
+
+
+
+
+
+
+
+                                    <!-- Edit modal start -->
+                                    <div class="modal fade" id="addmodal<?php echo $data["Id"] ?>" tabindex="-1" role="dialog"
+                                        aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered " role="document">
+                                            <div class="modal-content">
+
+                                                <form method="POST" action="Edit_seller.php?id=<?php echo $data["Id"]; ?>"
+                                                    enctype='multipart/form-data'>
+                                                    <div class="modal-header text-center">
+                                                        <h4 class="modal-title w-100 font-weight-bold">Edit Seller</h4>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body mx-3">
+                                                        <div class="md-form">
+                                                            <label for="Name">Name: </label>
+
+                                                            <input required type="text" id="Name"
+                                                                value=" <?php echo $data["Name"] ?>" class="form-control"
+                                                                name="Name">
+                                                        </div>
+                                                        <div class="md-form">
+                                                            <label for="Address">Address: </label>
+                                                            <input required type="text" id="Address"
+                                                                value=" <?php echo $data["Address"] ?>" class="form-control"
+                                                                name="Address">
+                                                        </div>
+                                                        <div class="md-form">
+                                                            <label for="Contact">Contact </label>
+                                                            <input required type="text" id="Contact"
+                                                                value="<?php echo $data["Contact"] ?>" class="form-control"
+                                                                name="Contact">
+                                                        </div>
+
+                                                        <div class="md-form">
+                                                            <label for="Photo">Photo: </label>
+                                                            <input type="file" class="form-control-file" id="Photo" name="Photo"
+                                                                accept=".jpg, .jpeg, .png">
+                                                        </div>
+
+                                                        <div class="md-form">
+                                                            <label for="Citizenship">Citizenship: </label>
+                                                            <input type="file" class="form-control-file" id="Citizenship"
+                                                                name="Citizenship" alt="aaa" accept=".jpg, .jpeg, .png">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-center">
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button class="btn btn-success">Add</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- Edit modal end -->
+
+
+
+
+
+
                                     <?php
                                     }
 
@@ -186,70 +259,8 @@
             </div>
 
 
-            <?php
-            require_once("Connection.php");
-            $sql = "SELECT * from Seller";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
 
-                while ($data = mysqli_fetch_array($result)) {
-                    ?>
-                    <!-- Edit modal start -->
-                    <div class="modal fade" id="addmodal<?php echo $data["Id"] ?>" tabindex="-1" role="dialog"
-                        aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered " role="document">
-                            <form method="POST" action="Edit_seller.php?id=<?php echo $data["Id"]; ?>" class="modal-content"
-                                enctype='multipart/form-data'>
-                                <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">Edit Seller</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body mx-3">
-                                    <div class="md-form">
-                                        <label for="Name">Name: </label>
 
-                                        <input required type="text" id="Name" value=" <?php echo $data["Name"] ?>"
-                                            class="form-control" name="Name">
-                                    </div>
-                                    <div class="md-form">
-                                        <label for="Address">Address: </label>
-                                        <input required type="text" id="Address" value=" <?php echo $data["Address"] ?>"
-                                            class="form-control" name="Address">
-                                    </div>
-                                    <div class="md-form">
-                                        <label for="Contact">Contact </label>
-                                        <input required type="text" id="Contact" value="<?php echo $data["Contact"] ?>"
-                                            class="form-control" name="Contact">
-                                    </div>
-
-                                    <div class="md-form">
-                                        <label for="Photo">Photo: </label>
-                                        <input  type="file" class="form-control-file" id="Photo" name="Photo"
-                                            accept=".jpg, .jpeg, .png">
-                                    </div>
-
-                                    <div class="md-form">
-                                        <label for="Citizenship">Citizenship: </label>
-                                        <input  type="file" class="form-control-file" id="Citizenship"
-                                            name="Citizenship" alt="aaa" accept=".jpg, .jpeg, .png">
-                                    </div>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    <button class="btn btn-success">Add</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Edit modal end -->
-                    <?php
-                }
-
-            }
-
-            ?>
 
 
             <!-- Add Modal Start -->
