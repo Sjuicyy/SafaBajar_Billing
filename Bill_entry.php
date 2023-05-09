@@ -20,6 +20,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Font Awesome JS -->
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script> -->
+
 </head>
 
 <body>
@@ -37,7 +46,7 @@
 
             <ul class="list-unstyled components">
 
-                <li class="active mx-auto">
+                <li>
                     <a href="Index.php"><i class="fa fa-home"></i> Home</a>
                 </li>
                 <li>
@@ -61,7 +70,7 @@
                 <li>
                     <a href="Seller.php"><i class="fa fa-users"></i> Seller</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="Bill_entry.php"> <i class="fa fa-file-invoice-dollar"></i> Billing</a>
                 </li>
                 <li>
@@ -108,103 +117,78 @@
                 </div>
             </nav>
 
-            <div class="container">
-                <div class="row mb-4">
-                    <h2 class="cath2">Dashboard</h2>
+
+
+
+
+            <!--Add modal start -->
+            <div class="modal1 fade1" id="modalSubscriptionForm" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <form method="POST" action="Save_payment.php" class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Bill
+                                Entry
+                            </h4>
+
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
+                                <strong class="sl d-block">Select Seller:</strong>
+                                <select id="multiple-checkboxes" class="w-100 form-control" name="Seller_id">
+                                    <?php
+                                    require_once("Connection.php");
+                                    $sql = "select * from Seller";
+                                    $result = mysqli_query($conn, $sql);
+                                    if ($result->num_rows > 0) {
+                                        while ($data = mysqli_fetch_array($result)) {
+                                            ?>
+                                            <option value="<?php echo $data["Id"] ?>">
+                                                <?php echo $data["Name"] . " (" . $data["Contact"] . ")" ?>
+                                            </option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="md-form">
+                                <label data-error="wrong" data-success="right" for="catName">Amount </label>
+                                <input type="number" id="catName" class="form-control" name="Amount" required>
+                            </div>
+                            <div class="md-form">
+                                <label data-error="wrong" data-success="right" for="catName">Remarks </label>
+                                <input type="text" id="catName" class="form-control" name="Remarks" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer mb-3 mt-3 d-flex justify-content-center">
+                            <button class="btn w-75 btn-success">Save</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <a href="Stall.php">
-                            <div class="main-box">
-                                <i class="fa fa-store fa-5x"></i>
-                                <?php
-                                require_once("Connection.php");
-                                $sql = "SELECT DISTINCT Stall.Name FROM `Stall` ";
-                                $result = mysqli_query($conn, $sql);
-                                ?>
-                                <h5>Stalls</h5>
-                                <p class="float-right">
-                                    <?php echo $row = mysqli_num_rows($result) ?>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="Category.php">
-                            <div class="main-box">
-                                <?php
-                                $sql = "SELECT DISTINCT * FROM `Category` ";
-                                $result = mysqli_query($conn, $sql);
-                                ?>
-                                <i class="fa fa-list fa-5x"></i>
-                                <h5>Categories</h5>
-                                <p class="float-right">
-                                    <?php echo $row = mysqli_num_rows($result) ?>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="Seller.php">
-                            <div class="main-box">
-                                <?php
-                                $sql = "SELECT DISTINCT * FROM `Seller` ";
-                                $result = mysqli_query($conn, $sql);
-                                ?>
-                                <i class="fa fa-users fa-5x"></i>
-                                <h5>Seller</h5>
-                                <p class="float-right">
-                                    <?php echo $row = mysqli_num_rows($result) ?>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="Bill_entry.php">
-                            <div class="main-box">
-                                <i class="fa fa-file-invoice-dollar fa-5x"></i>
-                                <h5>Bill Entry</h5>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="Report.php">
-                            <div class="main-box">
-                                <i class="fa-sharp fa-solid fa-file-lines fa-5x"></i>
-                                <h5>Report</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
             </div>
-
+            <!--Add modal end -->
         </div>
-    </div>
 
-    <div class="overlay"></div>
+        <div class="overlay"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+            integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
 
-    <!-- jQuery Custom Scroller CDN -->
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <script src="script.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>

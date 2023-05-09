@@ -19,7 +19,7 @@ $CitizenPic = $data['Citizenship'];
 unlink("./Citizenship/$CitizenPic");
 
 
-// TO DELERE DATA FORM DATABASE
+// TO DELEtE DATA FORM DATABASE
 $sql = "DELETE from Seller where `Seller`.`Id` = $Id";
 mysqli_query($conn, $sql);
 header('location:Seller.php');

@@ -71,10 +71,10 @@
                     <a href="Seller.php"><i class="fa fa-users"></i> Seller</a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fa fa-file-invoice-dollar"></i> Billing</a>
+                    <a href="Bill_entry.php"> <i class="fa fa-file-invoice-dollar"></i> Billing</a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fa-sharp fa-solid fa-file-lines"></i> Report</a>
+                    <a href="Report.php"> <i class="fa-sharp fa-solid fa-file-lines"></i> Report</a>
                 </li>
             </ul>
 
@@ -99,14 +99,8 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="Index.php">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Index.php">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Index.php">Home</a>
+                              <li class="nav-item">
+                                <a class="nav-link text-dark h4" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -141,7 +135,7 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody>y
                                 <?php
                                 require_once 'Connection.php';
                                 $sql = "SELECT * from Category";

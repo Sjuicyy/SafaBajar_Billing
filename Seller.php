@@ -41,28 +41,25 @@
             </div>
 
             <ul class="list-unstyled components">
-
                 <li>
                     <a href="Index.php"><i class="fa fa-home"></i> Home</a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="Stall.php"> <i class="fa fa-store"></i> Stalls</a>
                 </li>
                 <li>
                     <a href="Category.php"><i class="fa fa-list"></i> Category</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="Seller.php"><i class="fa fa-users"></i> Seller</a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fa fa-file-invoice-dollar"></i> Billing</a>
+                    <a href="Bill_entry.php"> <i class="fa fa-file-invoice-dollar"></i> Billing</a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fa-sharp fa-solid fa-file-lines"></i> Report</a>
+                    <a href="Report.php"> <i class="fa-sharp fa-solid fa-file-lines"></i> Report</a>
                 </li>
             </ul>
-
-
         </nav>
 
         <!-- Page Content  -->
@@ -82,14 +79,8 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="Index.php">Home</a>
-                            </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Index.php">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Index.php">Home</a>
+                                <a class="nav-link text-dark h4" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -159,18 +150,26 @@
                                                 <?php echo $data["Address"] ?>
                                             </td>
                                             <td>
-                                                <button type="submit" class="btn btn-warning" data-toggle="modal"
+
+
+
+                                                <button type="submit" class="btn btn-sm btn-warning" data-toggle="modal"
                                                     data-toggle="tooltip" data-target='#addmodal<?php echo $data["Id"] ?>'
                                                     title="Edit"><i class="fa-solid fa-pen-to-square fa-lg"></i></button>
-                                                <button type="submit" class="btn btn-primary" data-toggle="tooltip"
-                                                    title="Transfer"><i
-                                                        class="fa-solid fa-arrow-right-arrow-left fa-lg"></i></button>
-                                                <button type="submit" class="btn btn-info" data-toggle="tooltip"
-                                                    title="Report"><i
-                                                        class="fa-sharp fa-solid fa-file-lines fa-lg"></i></button>
-                                                <a href="Delete_user.php?id=<?php echo $data["Id"] ?>">
-                                                    <button class="btn btn-danger">Delete</button>
+
+
+
+                                                <a href="Seller_report.php?id=<?php echo $data["Id"] ?>">
+                                                    <button type="submit" class="btn btn-sm mx-1 btn-primary"
+                                                        data-toggle="tooltip" title="Report"><i
+                                                            class="fa-sharp fa-solid fa-file-lines  fa-lg"></i></button>
                                                 </a>
+
+
+                                                <!-- <a class="disabled" href="Delete_user.php?id=<?php echo $data["Id"] ?>">
+                                                    <button class="btn btn-danger disabled">Delete</button>
+                                                </a> -->
+                                                <button class="btn btn-danger btn-sm disabled">Delete</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -231,9 +230,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer d-flex justify-content-center">
-                                                        <button type="button" class="btn btn-danger"
-                                                            data-dismiss="modal">Close</button>
-                                                        <button class="btn btn-success">Add</button>
+                                                        <button type="button" class="btn w-25 btn-danger"
+                                                            data-dismiss="modal">Cancel</button>
+                                                        <button class="btn w-25 btn-success">Save</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -241,11 +240,6 @@
                                         </div>
                                     </div>
                                     <!-- Edit modal end -->
-
-
-
-
-
 
                                     <?php
                                     }

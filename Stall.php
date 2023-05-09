@@ -56,10 +56,10 @@
                     <a href="seller.php"><i class="fa fa-users"></i> Seller</a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fa fa-file-invoice-dollar"></i> Billing</a>
+                    <a href="Bill_entry.php"> <i class="fa fa-file-invoice-dollar"></i> Billing</a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fa-sharp fa-solid fa-file-lines"></i> Report</a>
+                    <a href="Report.php"> <i class="fa-sharp fa-solid fa-file-lines"></i> Report</a>
                 </li>
             </ul>
 
@@ -83,14 +83,8 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="Index.php">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Index.php">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Index.php">Home</a>
+                              <li class="nav-item">
+                                <a class="nav-link text-dark h4" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -129,7 +123,7 @@
                             <tbody>
                                 <?php
                                 require_once("Connection.php");
-                                $sql = "SELECT DISTINCT  Stall.Type, Stall.Name ,Seller.Name as Seller_name FROM `Stall`  inner join `Seller` on `Stall`.`Seller_id` = `Seller`.`id`";
+                                $sql = "SELECT DISTINCT  Stall.Type, Stall.Name ,Stall.Seller_id,Seller.Name as Seller_name FROM `Stall`  inner join `Seller` on `Stall`.`Seller_id` = `Seller`.`id`";
                                 $result = mysqli_query($conn, $sql);
 
                                 if ($result->num_rows > 0) {
@@ -151,7 +145,8 @@
                                                 <?php echo $data["Type"] ?>
                                             </td>
                                             <td class="d-flex justify-content-end">
-                                                <button type="submit" data-toggle="modal" data-target="#editCategory<?php echo $data["Name"] ?>"
+                                                <button type="submit" data-toggle="modal"
+                                                    data-target="#editStall<?php echo $data["Name"] ?>"
                                                     class="btn btn-sm mx-1 btn-success" data-toggle="tooltip" title="Edit"><i
                                                         class="fa-solid fa-pen-to-square  fa-lg"></i></button>
 
@@ -160,9 +155,11 @@
                                                     class="btn btn-sm mx-1 btn-warning" data-toggle="tooltip"
                                                     title="Transfer"><i
                                                         class="fa-solid fa-arrow-right-arrow-left  fa-lg"></i></button>
-                                                <button type="submit" class="btn btn-sm mx-1 btn-primary" data-toggle="tooltip"
-                                                    title="Report"><i
-                                                        class="fa-sharp fa-solid fa-file-lines  fa-lg"></i></button>
+                                                        <a href="Stall_bill.php?id=<?php echo $data["Name"] ?>">
+                                                            <button type="submit" class="btn btn-sm mx-1 btn-primary" data-toggle="tooltip"
+                                                                title="Report"><i
+                                                                    class="fa-sharp fa-solid fa-file-lines  fa-lg"></i></button>
+                                                        </a>
                                             </td>
                                             <td>
                                                 <button class="btn btn-sm btn-primary" data-toggle="modal"
@@ -172,12 +169,8 @@
 
 
 
-
-
+                                        
                                         <!-- Category view modal  Start-->
-
-
-
                                         <div class="modal fade" id="showCategory<?php echo $data["Name"] ?>" tabindex="-1"
                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog " role="document">
@@ -197,7 +190,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="row  px-5 ">
+                                                    <div class="row px-5 ">
                                                         <div class="col-6 my-1 bg-secondary ">
                                                             Category
                                                         </div>
@@ -210,10 +203,10 @@
                                                         while ($data_cat = mysqli_fetch_assoc($result_cat)) {
                                                             $Category = $data_cat['Title'];
                                                             ?>
-                                                            <div class="col-6 my-2">
+                                                            <div class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
                                                                 <?php echo $data_cat['Title']; ?>
                                                             </div>
-                                                            <div class="col-6 my-2">
+                                                            <div class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
                                                                 <?php
                                                                 $sql1 = "SELECT * FROM `Stall` WHERE `Name`='$Stall_Name' AND `Category`='$Category'";
                                                                 $result1 = mysqli_query($conn, $sql1);
@@ -232,7 +225,7 @@
                                                         ?>
                                                     </div>
                                                     <div class="modal-footer d-flex justify-content-center">
-                                                        <button class="btn w-50 btn-success">Edit</button>
+                                                        <button class="btn w-50 btn-success" data-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -241,14 +234,9 @@
 
 
 
-                                        <!-- Edit  modal  end -->
+                                        <!-- Stall Edit  modal  Start -->
 
-
-
-
-
-
-                                        <div class="modal fade" id="editCategory<?php echo $data["Name"] ?>" tabindex="-1"
+                                        <div class="modal fade" id="editStall<?php echo $data["Name"] ?>" tabindex="-1"
                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog " role="document">
                                                 <div class="modal-content">
@@ -257,6 +245,7 @@
                                                         <div>
                                                             <h4 class="modal-title w-100 d-flex font-weight-bold">Stall :
                                                                 <?php echo $data['Name'] ?>
+                                                              
                                                             </h4>
                                                             <h6 class="d-flex justify-content-start">
                                                                 <?php echo $data['Seller_name'] ?>
@@ -267,71 +256,54 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="row  px-5 ">
-                                                        <div class="col-6 my-1 bg-secondary ">
-                                                            Category
-                                                        </div>
-                                                        <div class="col-6 my-1 bg-secondary ">
-                                                            Rate
-                                                        </div>
-                                                        <?php
-                                                        $sql_cat = "SELECT * FROM Category";
-                                                        $result_cat = mysqli_query($conn, $sql_cat);
-                                                        while ($data_cat = mysqli_fetch_assoc($result_cat)) {
-                                                            $Category = $data_cat['Title'];
-                                                            ?>
-                                                            <div class="col-6 my-2">
-                                                                <?php echo $data_cat['Title']; ?>
-                                                            </div>
-                                                            <div class="col-6 my-2">
-                                                                <?php
-                                                                $sql1 = "SELECT * FROM `Stall` WHERE `Name`='$Stall_Name' AND `Category`='$Category'";
-                                                                $result1 = mysqli_query($conn, $sql1);
-                                                                $data1 = mysqli_fetch_assoc($result1);
-                                                                ?>
-                                                                <?php if ($data1['Rate'] == !null) {
-                                                                    echo " <div class='d-flex'><p class='h6 d-flex mx-1 text-center'> Rs. </p>" . "<p class='h6 text-center'>" . $data1['Rate'] . "</p> </div> ";
-                                                                } else {
-                                                                    echo " <div class='d-flex'><p class='h6 d-flex mx-1 text-center'> Rs. </p>" . "<p class='h6 text-center'>" . 0 . "</p> </div> ";
+                                                    <form action="Edit_stall.php?id=<?php echo $data['Name'] ?>&S_id=<?php echo $data["Seller_id"] ?>&type=<?php echo $data["Type"] ?>" method="POST">
 
-                                                                }
-                                                                ?>
+                                                        <div class="row  px-5 ">
+                                                            <div class="col-6 my-1 bg-secondary ">
+                                                                Category
+                                                            </div>
+                                                            <div class="col-6 my-1 bg-secondary ">
+                                                                Rate
                                                             </div>
                                                             <?php
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                    <div class="modal-footer d-flex justify-content-center">
-                                                        <button class="btn w-50 btn-success">Edit</button>
-                                                    </div>
+                                                            $sql_cat = "SELECT * FROM Category";
+                                                            $result_cat = mysqli_query($conn, $sql_cat);
+                                                            while ($data_cat = mysqli_fetch_assoc($result_cat)) {
+                                                                $Category = $data_cat['Title'];
+                                                                ?>
+                                                                <div class="col-6 my-2">
+                                                                    <?php echo $data_cat['Title']; ?>
+                                                                </div>
+                                                                <div class="col-6 my-2">
+                                                                    <?php
+                                                                    $sql1 = "SELECT * FROM `Stall` WHERE `Name`='$Stall_Name' AND `Category`='$Category'";
+                                                                    $result1 = mysqli_query($conn, $sql1);
+                                                                    $data1 = mysqli_fetch_assoc($result1);
+                                                                    ?>
+                                                                    <?php if ($data1['Rate'] == !null) {
+                                                                        $Rate = $data1['Rate'];
+                                                                        echo " <input name='$Category' type='number' value='$Rate' class='form-control'> ";
+                                                                    } else {
+                                                                        echo " <input name='$Category' type='number' value='0' class='form-control'> ";
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                        <div class="modal-footer d-flex justify-content-center">
+                                                        <button data-dismiss="modal" class="btn w-50 p-2 btn-danger">
+                                                                Cancel
+                                                            </button>
+                                                            <button  class="btn w-50 btn-success">Save</button>
+                                                        </div>
+
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                        <!-- Edit  modal  end -->
-
-
-
-
-
-
-
-
+                                        <!-- Stall Edit  modal  end -->
 
 
                                         <!-- Transfer  modal  end -->
@@ -342,8 +314,15 @@
                                             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <h4 class="modal-title text-center mt-2 w-100 font-weight-bold">Transfer
-                                                        Stall</h4>
+                                                    <div class="d-flex border ">
+
+                                                        <h4 class="modal-title text-center mt-2 w-100 font-weight-bold">Transfer
+                                                            Stall</h4>
+                                                        <button type="button" class="close mx-2" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
 
                                                     <div class="modal-header text-center">
                                                         <div>
@@ -354,10 +333,7 @@
                                                                 <?php echo $data['Seller_name'] ?>
                                                             </h6>
                                                         </div>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
+
                                                     </div>
                                                     <form action="Stall_transfer.php" method="POST">
                                                         <div class="modal-body mx-3">
@@ -376,7 +352,6 @@
                                                                     name="Stall_name">
                                                                 <select id="multiple-checkboxes" class="w-100 custom-select"
                                                                     name="New_owner">
-
                                                                     <?php
                                                                     $sql0 = "select * from Seller";
                                                                     $result0 = mysqli_query($conn, $sql0);
@@ -403,7 +378,6 @@
 
                                             </div>
                                         </div>
-
                                         <!-- Transfer modal  end -->
                                         <?php
                                     }
@@ -450,7 +424,7 @@
                             <input type="text" name="Security" value="" /> security <br>
                             <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
                                 <strong class="sl d-block">Select Seller:</strong>
-                                <select id="multiple-checkboxes" class="w-100" name="Seller_id">
+                                <select id="multiple-checkboxes" class="w-100 form-control" name="Seller_id">
                                     <?php
                                     require_once("Connection.php");
                                     $sql = "select * from Seller";
@@ -472,7 +446,7 @@
 
                             <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
                                 <strong class="sl d-block">Type:</strong>
-                                <select id="multiple-checkboxes" class="w-100" name="Type">
+                                <select id="multiple-checkboxes" class="w-100 form-control" name="Type">
                                     <option value="None">None</option>
                                     <option value="Fruits">Fruits</option>
                                     <option value="Vegetable">Vegetable</option>
