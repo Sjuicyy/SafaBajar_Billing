@@ -400,7 +400,7 @@ table thead tr td {
 }
 
 .sl {
-   font-size: 1rem;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
@@ -408,6 +408,51 @@ table thead tr td {
     margin-bottom: 0.5rem;
 }
 
-.md-form{
+.md-form {
     padding-top: 8px;
+}
+
+.mhead {
+    background-color: #6dbe45;
+}
+
+.profile-img {
+    max-width: 150px;
+    border-radius: 50%;
+}
+
+.pp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.profile-card h2 {
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.profile-card p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.profile-card i {
+    margin-right: 10px;
+}
+
+.btn-edit-profile {
+    margin-top: 20px;
+}
+
+#Myimg {
+    cursor: pointer;
 }

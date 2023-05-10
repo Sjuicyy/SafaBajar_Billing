@@ -83,7 +83,7 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                              <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link text-dark h4" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item dropdown">
@@ -155,11 +155,11 @@
                                                     class="btn btn-sm mx-1 btn-warning" data-toggle="tooltip"
                                                     title="Transfer"><i
                                                         class="fa-solid fa-arrow-right-arrow-left  fa-lg"></i></button>
-                                                        <a href="Stall_bill.php?id=<?php echo $data["Name"] ?>">
-                                                            <button type="submit" class="btn btn-sm mx-1 btn-primary" data-toggle="tooltip"
-                                                                title="Report"><i
-                                                                    class="fa-sharp fa-solid fa-file-lines  fa-lg"></i></button>
-                                                        </a>
+                                                <a href="Stall_bill.php?id=<?php echo $data["Name"] ?>">
+                                                    <button type="submit" class="btn btn-sm mx-1 btn-primary"
+                                                        data-toggle="tooltip" title="Report"><i
+                                                            class="fa-sharp fa-solid fa-file-lines  fa-lg"></i></button>
+                                                </a>
                                             </td>
                                             <td>
                                                 <button class="btn btn-sm btn-primary" data-toggle="modal"
@@ -169,7 +169,7 @@
 
 
 
-                                        
+
                                         <!-- Category view modal  Start-->
                                         <div class="modal fade" id="showCategory<?php echo $data["Name"] ?>" tabindex="-1"
                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -203,10 +203,12 @@
                                                         while ($data_cat = mysqli_fetch_assoc($result_cat)) {
                                                             $Category = $data_cat['Title'];
                                                             ?>
-                                                            <div class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
+                                                            <div
+                                                                class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
                                                                 <?php echo $data_cat['Title']; ?>
                                                             </div>
-                                                            <div class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
+                                                            <div
+                                                                class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
                                                                 <?php
                                                                 $sql1 = "SELECT * FROM `Stall` WHERE `Name`='$Stall_Name' AND `Category`='$Category'";
                                                                 $result1 = mysqli_query($conn, $sql1);
@@ -245,7 +247,7 @@
                                                         <div>
                                                             <h4 class="modal-title w-100 d-flex font-weight-bold">Stall :
                                                                 <?php echo $data['Name'] ?>
-                                                              
+
                                                             </h4>
                                                             <h6 class="d-flex justify-content-start">
                                                                 <?php echo $data['Seller_name'] ?>
@@ -256,7 +258,9 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form action="Edit_stall.php?id=<?php echo $data['Name'] ?>&S_id=<?php echo $data["Seller_id"] ?>&type=<?php echo $data["Type"] ?>" method="POST">
+                                                    <form
+                                                        action="Edit_stall.php?id=<?php echo $data['Name'] ?>&S_id=<?php echo $data["Seller_id"] ?>&type=<?php echo $data["Type"] ?>"
+                                                        method="POST">
 
                                                         <div class="row  px-5 ">
                                                             <div class="col-6 my-1 bg-secondary ">
@@ -293,10 +297,10 @@
                                                             ?>
                                                         </div>
                                                         <div class="modal-footer d-flex justify-content-center">
-                                                        <button data-dismiss="modal" class="btn w-50 p-2 btn-danger">
+                                                            <button data-dismiss="modal" class="btn w-50 p-2 btn-danger">
                                                                 Cancel
                                                             </button>
-                                                            <button  class="btn w-50 btn-success">Save</button>
+                                                            <button class="btn w-50 btn-success">Save</button>
                                                         </div>
 
                                                     </form>
@@ -388,8 +392,14 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
             <!--Add Stall modal start -->
-            <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            <div class="modal1 fade1" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <form method="POST" action="Add_stall.php" class="modal-content">
@@ -404,6 +414,79 @@
                                 <label data-error="wrong" data-success="right" for="catName">Stall Name: </label>
                                 <input type="text" id="catName" class="form-control" name="Stall_name">
                             </div>
+
+
+
+
+
+
+
+                            <label class="d-block mt-3 mb-0" for="select-options">Select Catagories:</label>
+
+                            <div class="dropdown">
+                                <input role="button" type="text" id="selected-options"
+                                    class="form-control custom-select btn dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" readonly />
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item dropa" href="#">
+                                        <div> <input id="Rent" type="checkbox" name="CRent" class="option-checkbox"
+                                                value="Rent" />
+                                            <label for="Rent" class="dlabel">Rent</label>
+                                        </div>
+                                        <div> <input type="number" name="Rent" 
+                                                class="form-control form-control-sm option-input" />
+                                        </div>
+                                    </a>
+
+                                    <a class="dropdown-item dropa" href="#">
+                                        <div> <input id="Water" type="checkbox" name="CWater" class="option-checkbox"
+                                                value="Water" />
+                                            <label for="Water" class="dlabel">Water</label>
+                                        </div>
+                                        <div> <input type="number" name="Water" 
+                                                class="form-control form-control-sm option-input" />
+                                        </div>
+                                    </a>
+
+                                    <a class="dropdown-item dropa" href="#">
+                                        <div> <input id="Electricity" type="checkbox" name="CElectricity"
+                                                class="option-checkbox" value="Electricity" />
+                                            <label for="Rent" class="dlabel">Electricity</label>
+                                        </div>
+                                        <div> <input type="number" name="Electricity" 
+                                                class="form-control form-control-sm option-input" />
+                                        </div>
+                                    </a>
+
+                                    <a class="dropdown-item dropa" href="#">
+                                        <div> <input id="Waste" type="checkbox" name="CWaste" class="option-checkbox"
+                                                value="Waste" />
+                                            <label for="Waste" class="dlabel">Waste</label>
+                                        </div>
+                                        <div> <input type="number" name="Waste" 
+                                                class="form-control form-control-sm option-input" />
+                                        </div>
+                                    </a>
+
+                                    <a class="dropdown-item dropa" href="#">
+                                        <div> <input id="Security" type="checkbox" name="CSecurity"
+                                                class="option-checkbox" value="Security" />
+                                            <label for="Security" class="dlabel">Security</label>
+                                        </div>
+                                        <div> <input type="number" name="Security" 
+                                                class="form-control form-control-sm option-input" />
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <!-- 
+
                             <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
                                 <div>
                                     <strong class="sl d-block">Select Catagories:</strong>
@@ -421,7 +504,15 @@
                             <input type="text" name="Water" value="" /> Water <br>
                             <input type="text" name="Electrical" value="" /> electrical <br>
                             <input type="text" name="Waste" value="" /> waste <br>
-                            <input type="text" name="Security" value="" /> security <br>
+                            <input type="text" name="Security" value="" /> security <br> -->
+
+
+
+
+
+
+
+
                             <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
                                 <strong class="sl d-block">Select Seller:</strong>
                                 <select id="multiple-checkboxes" class="w-100 form-control" name="Seller_id">
@@ -465,6 +556,10 @@
             </div>
 
             <!-- modal end -->
+
+
+
+
         </div>
         <div class="overlay"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"

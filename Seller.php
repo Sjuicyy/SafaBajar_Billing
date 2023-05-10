@@ -26,6 +26,52 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <style>
+        .mhead {
+            background-color: #6dbe45;
+        }
+
+        .profile-img {
+            max-width: 150px;
+            border-radius: 50%;
+        }
+
+        .pp {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .profile-card h2 {
+            font-weight: bold;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .profile-card p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .profile-card i {
+            margin-right: 10px;
+        }
+
+        .btn-edit-profile {
+            margin-top: 20px;
+        }
+
+        #Myimg {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -114,7 +160,6 @@
                                 <tr>
                                     <th>S.N.</th>
                                     <th>Name</th>
-                                    <th>Photo</th>
                                     <th>Contact</th>
                                     <th>Address</th>
                                     <th>Actions</th>
@@ -139,9 +184,7 @@
                                             <td>
                                                 <?php echo $data["Name"] ?>
                                             </td>
-                                            <td>
-                                                <img src="./SellerPhotos/<?php echo $data["Photo"] ?>" height="100px">
-                                            </td>
+
                                             <td>
                                                 <?php echo $data["Contact"] ?>
                                             </td>
@@ -164,12 +207,14 @@
                                                         data-toggle="tooltip" title="Report"><i
                                                             class="fa-sharp fa-solid fa-file-lines  fa-lg"></i></button>
                                                 </a>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#Profile_detail<?php echo $data["Id"] ?>"><i class="fa-solid fa-user"></i></button>
 
 
-                                                <!-- <a class="disabled" href="Delete_user.php?id=<?php echo $data["Id"] ?>">
+                                                <!--  <a class="disabled" href="Delete_user.php?id=<?php echo $data["Id"] ?>">
                                                     <button class="btn btn-danger disabled">Delete</button>
                                                 </a> -->
-                                                <button class="btn btn-danger btn-sm disabled">Delete</button>
+                                                <!-- <button class="btn btn-danger btn-sm disabled">Delete</button> -->
                                             </td>
                                         </tr>
                                     </tbody>
@@ -241,6 +286,85 @@
                                     </div>
                                     <!-- Edit modal end -->
 
+                                    <!-- Vview Profile Detail Modal  start -->
+
+
+
+
+                                    <div class="modal fade" id="Profile_detail<?php echo $data["Id"] ?>">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header mhead text-white">
+                                                    <h4 class="modal-title">Profile</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-4 pp">
+                                                            <img src="./SellerPhotos/<?php echo $data["Photo"] ?>"
+                                                                alt="Profile Picture" class="profile-img">
+                                                        </div>
+
+                                                        <div class="col-md-8">
+                                                            <div class="profile-card">
+                                                                <p><i class="fa-solid fa-user"></i> <?php echo $data["Name"] ?></p>
+                                                                <p><i class="fas fa-map-marker-alt"></i>  <?php echo $data["Address"] ?>
+                                                                </p>
+                                                                <p><i class="fas fa-phone"></i>  <?php echo $data["Contact"] ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-5">
+                                                        <div class="col-md-4 text-right">
+                                                            <p>Citizenship:</p>
+                                                        </div>
+                                                        <div class="col-md-8 text-left"><img src="./Citizenship/<?php echo $data["Citizenship"] ?>"
+                                                                alt="Citizenship.pic" width="200px" id="Myimg"></div>
+
+                                                        <!--Citizenship Modal -->
+                                                        <div class="modal fade" id="Mymodal" tabindex="-1" role="dialog"
+                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title fw-bold" id="exampleModalLabel">
+                                                                            Citizenship</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                            aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body text-center">
+                                                                        <img src="./Citizenship/<?php echo $data["Citizenship"] ?>" alt="Citizenship.pic" width="600px"
+                                                                            id="Myimg">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" id="printBtn"
+                                                                            class="btn btn-primary">Print</button>
+                                                                        <button type="button" class="btn btn-danger"
+                                                                            data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- View Profile Detail Modal  end -->
                                     <?php
                                     }
 
@@ -317,6 +441,10 @@
         </div>
 
         <div class="overlay"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
             integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
@@ -344,6 +472,39 @@
                 });
             });
         </script>
+
+
+
+
+        <script>
+            //Open Modal
+            $(document).ready(function () {
+                $('#Myimg').click(function () {
+                    $('#Mymodal').modal('show')
+                });
+            });
+            // Print
+            $(document).ready(function () {
+                $('#printBtn').click(function () {
+                    var image = $('#Myimg').attr('src');
+                    var windowContent = '<!DOCTYPE html>';
+                    windowContent += '<html>';
+                    windowContent += '<head><title>Print Image</title></head>';
+                    windowContent += '<body>';
+                    windowContent += '<img src="' + image + '" style="max-width: 100%;">';
+                    windowContent += '</body>';
+                    windowContent += '</html>';
+                    var printWindow = window.open('', '', 'height=400,width=800');
+                    printWindow.document.write(windowContent);
+                    printWindow.document.close();
+                    printWindow.focus();
+                    printWindow.print();
+                    printWindow.close();
+                });
+            });
+        </script>
+
+
 
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
