@@ -59,6 +59,15 @@
 
 
     <div class="container">
+        <div class="d-flex justify-content-around ">
+            <div></div>
+            <button class="btn btn-lg font-weight-bold btn-warning btn-primary mt-3" id="printBtn">Print</button>
+            <form action="Add_debt.php">
+                <button class="btn btn-lg text-dark font-weight-bold btn-success btn-primary mt-3">Finish</button>
+            </form>
+
+
+        </div>
         <div class="row">
             <?php
             require_once("Connection.php");
@@ -83,6 +92,7 @@
                             <div class="col-md-8 text-right">
                                 <p class='font-weight-bold'>Stall:
                                     <?php echo $data['Name'] ?>
+
                                 </p>
                                 <p class='font-weight-bold'>
                                     <?php echo $data['Seller_name'] ?>
@@ -147,6 +157,7 @@
                                     ?>
                                     </tr>
 
+
                                     <tr>
                                         <td class="text-right">
                                             <p>
@@ -179,12 +190,9 @@
             }
             ?>
         </div>
-        <div class="d-flex justify-content-around ">
-            <div></div>
-            <button class="btn btn-lg font-weight-bold btn-warning btn-primary mb-5" id="printBtn">Print</button>
-        </div>
     </div>
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
