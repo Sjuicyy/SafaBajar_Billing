@@ -1,63 +1,10 @@
-<!-- Category view modal  Start-->
-<div class="modal fade" id="showCategory<?php echo $data["Name"] ?>" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog " role="document">
-        <div class="modal-content">
 
-            <div class="modal-header text-center">
-                <div>
-                    <h4 class="modal-title w-100 d-flex font-weight-bold">Stall :
-                        <?php echo $data['Name'] ?>
-                    </h4>
-                    <h6 class="d-flex justify-content-start">
-                        <?php echo $data['Seller_name'] ?>
-                    </h6>
-                </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="row px-5 ">
-                <div class="col-6 my-1 bg-secondary ">
-                    Category
-                </div>
-                <div class="col-6 my-1 bg-secondary ">
-                    Rate
-                </div>
-                <?php
-                require_once('Connection.php');
-                $sql_cat = "SELECT * FROM Category";
-                $result_cat = mysqli_query($conn, $sql_cat);
-                while ($data_cat = mysqli_fetch_assoc($result_cat)) {
-                    $Category = $data_cat['Title'];
-                    ?>
-                    <div class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
-                        <?php echo $data_cat['Title']; ?>
-                    </div>
-                    <div class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
-                        <?php
-                        $sql1 = "SELECT * FROM `Stall` WHERE `Name`='$Stall_Name' AND `Category`='$Category'";
-                        $result1 = mysqli_query($conn, $sql1);
-                        $data1 = mysqli_fetch_assoc($result1);
-                        ?>
-                        <?php if ($data1['Rate'] == !null) {
-                            echo " <div class='d-flex'><p class='h6 d-flex mx-1 text-center'> Rs. </p>" . "<p class='h6 text-center'>" . $data1['Rate'] . "</p> </div> ";
-                        } else {
-                            echo " <div class='d-flex'><p class='h6 d-flex mx-1 text-center'> Rs. </p>" . "<p class='h6 text-center'>" . 0 . "</p> </div> ";
-                        }
-                        ?>
-                    </div>
-                    <?php
-                }
-                ?>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button class="btn w-50 btn-success" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Category view modal  end -->
+<?php
+session_start();
+if(!($_SESSION['Email'])){
+    header('Location:Login.php');
+}
+?>
 
 
 
