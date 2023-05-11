@@ -392,14 +392,8 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
             <!--Add Stall modal start -->
-            <div class="modal1 fade1" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <form method="POST" action="Add_stall.php" class="modal-content">
@@ -414,13 +408,6 @@
                                 <label data-error="wrong" data-success="right" for="catName">Stall Name: </label>
                                 <input type="text" id="catName" class="form-control" name="Stall_name">
                             </div>
-
-
-
-
-
-
-
                             <label class="d-block mt-3 mb-0" for="select-options">Select Catagories:</label>
 
                             <div class="dropdown">
@@ -479,12 +466,6 @@
                                     </a>
                                 </div>
                             </div>
-
-
-
-
-
-
                             <!-- 
 
                             <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
@@ -505,14 +486,6 @@
                             <input type="text" name="Electrical" value="" /> electrical <br>
                             <input type="text" name="Waste" value="" /> waste <br>
                             <input type="text" name="Security" value="" /> security <br> -->
-
-
-
-
-
-
-
-
                             <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
                                 <strong class="sl d-block">Select Seller:</strong>
                                 <select id="multiple-checkboxes" class="w-100 form-control" name="Seller_id">
@@ -532,9 +505,6 @@
                                     ?>
                                 </select>
                             </div>
-
-
-
                             <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
                                 <strong class="sl d-block">Type:</strong>
                                 <select id="multiple-checkboxes" class="w-100 form-control" name="Type">
@@ -554,12 +524,7 @@
                     </form>
                 </div>
             </div>
-
             <!-- modal end -->
-
-
-
-
         </div>
         <div class="overlay"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"

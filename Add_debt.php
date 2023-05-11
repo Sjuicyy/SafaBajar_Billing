@@ -23,4 +23,5 @@ while ($data_stall = mysqli_fetch_array($result_stall)) {
     $sql2 = "INSERT INTO `Billing` (`Id`, `Seller_id`, `Amount`, `Debit`, `Remarks`, `Date`) VALUES (NULL, '$Seller_id', NULL , '$sum', '$Remarks' , CURRENT_TIMESTAMP)";
     $result2 = mysqli_query($conn, $sql2);
 }
+header('location:index.php' )
 ?>
