@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!($_SESSION['Email'])){
+    header('Location:Login.php');
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -93,7 +99,7 @@
                                     <a class="dropdown-item" href="#">Menu</a>
                                     <a class="dropdown-item" href="#">Add Catagories</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">LogOut</a>
+                                    <a class="dropdown-item" href="Logout.php">LogOut</a>
                                 </div>
                             </li>
                         </ul>

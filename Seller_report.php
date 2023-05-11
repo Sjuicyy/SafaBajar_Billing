@@ -85,8 +85,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col" colspan="2">Date</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Debit</th>
+                                    <th scope="col">Payment</th>
+                                    <th scope="col">Bill</th>
                                     <th scope="col">Remarks</th>
                                 </tr>
                             </thead>
@@ -147,11 +147,11 @@
                     </div>
                     <hr class='lh-0'>
                     <div class="d-flex">
-                        <div class="font-weight-bold">Total Debit : </div>
+                        <div class="font-weight-bold">Total Payment : </div>
                         <p> Rs.<?php echo $Debit; ?></p>
                     </div>
                     <div class="d-flex">
-                        <div class="font-weight-bold">Total Amount:</div>
+                        <div class="font-weight-bold">Total Bill Amount:</div>
                         <p>Rs.<?php echo $Amount; ?></p>
                     </div>
                     <div class="d-flex justify-content-end ">

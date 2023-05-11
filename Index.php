@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!($_SESSION['Email'])){
+    header('Location:Login.php');
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -100,7 +106,7 @@
                                     <a class="dropdown-item" href="#">Menu</a>
                                     <a class="dropdown-item" href="#">Add Catagories</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">LogOut</a>
+                                    <a class="dropdown-item" href="Logout.php">LogOut</a>
                                 </div>
                             </li>
                         </ul>
@@ -177,6 +183,14 @@
                             <div class="main-box">
                                 <i class="fa-sharp fa-solid fa-file-lines fa-5x"></i>
                                 <h5>Report</h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ">
+                        <a href="Admin.php">
+                            <div class="main-box bg-info">
+                                <i class="fa fa-user  fa-5x"></i>
+                                <h5>Admin</h5>
                             </div>
                         </a>
                     </div>
