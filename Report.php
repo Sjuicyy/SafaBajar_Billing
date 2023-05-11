@@ -70,6 +70,7 @@
         </div>
         <div class="row">
             <?php
+            $i=001;
             require_once("Connection.php");
             $sql_stall = "SELECT DISTINCT Stall.Name FROM `Stall` ";
             $result_stall = mysqli_query($conn, $sql_stall);
@@ -88,8 +89,14 @@
                             $result = mysqli_query($conn, $sql);
                             $data = mysqli_fetch_array($result);
                             // echo $data['Type'];
+                            
                             ?>
+
                             <div class="col-md-8 text-right">
+                                <p class='font-weight-bold'>Bill No. 
+                                    <?php echo $i++ ?>
+
+                                </p>
                                 <p class='font-weight-bold'>Stall:
                                     <?php echo $data['Name'] ?>
 
