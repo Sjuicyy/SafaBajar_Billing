@@ -3,21 +3,12 @@ session_start();
 if (!($User_Email = $_SESSION['Email'])) {
     header('Location:Login.php');
 }
-?>
-
-
-
-
-
-<?php
 require_once("Connection.php");
 $sql_user = "SELECT `Admin`.`Name` FROM `Admin` WHERE `Admin`.`Email`= '$User_Email' ";
 $result_user = mysqli_query($conn, $sql_user);
 $data_user = mysqli_fetch_array($result_user);
-echo $User_name=$data_user['Name'];
+$User_name = $data_user['Name'];
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,20 +69,41 @@ echo $User_name=$data_user['Name'];
 <body>
 
 
+    <?php
+    $sql_date = "SELECT `Billing`.`Date` FROM `Billing` WHERE `Billing`.`Amount` IS NULL ORDER BY `Billing`.`Date` DESC";
+    $result_date = mysqli_query($conn, $sql_date);
+    $Data_date = mysqli_fetch_array($result_date);
+
+    $Last_Date = ($Data_date['Date']); // last date from database
+    $Current_Date = (date("Y-m-d H:i:s")); // Current date 
+    
+    $Last_yearmonth = strtotime(substr($Last_Date, 0, 7)); // keeeping year and month and removing date time second etc from date
+    $Current_yearmonth = strtotime(substr($Current_Date, 0, 7)); // keeeping year and month and removing date time second etc from date
+    
+    $diff_in_months = ($Current_yearmonth - $Last_yearmonth) / (30 * 24 * 60 * 60);
+    if ($diff_in_months < 1) {
+        $hidden = true;
+    } else {
+        $hidden = false;
+    }
+    // ?>
+
+
     <div class="container">
         <div class="d-flex justify-content-around ">
             <div></div>
             <button class="btn btn-lg font-weight-bold btn-warning btn-primary mt-3" id="printBtn">Print</button>
-            <form action="Add_debt.php">
-                <button class="btn btn-lg text-dark font-weight-bold btn-success btn-primary mt-3">Finish</button>
-            </form>
+            <a href="Add_debt.php" class="<?php if ($hidden == true) {
+                echo 'd-none';
+            } ?> ">
+                <button class="btn btn-lg text-dark font-weight-bold btn-success btn-primary mt-3 ">Finish</button>
+            </a>
 
 
         </div>
         <div class="row">
             <?php
             $i = 001;
-            require_once("Connection.php");
             $sql_stall = "SELECT DISTINCT Stall.Name FROM `Stall` ";
             $result_stall = mysqli_query($conn, $sql_stall);
             while ($data_stall = mysqli_fetch_array($result_stall)) {
@@ -104,7 +116,6 @@ echo $User_name=$data_user['Name'];
                             </div>
                             <?php
                             $Stall_Name = $data_stall['Name'];
-                            require_once('Connection.php');
                             $sql = "SELECT  Stall.Name ,Stall.Seller_id,Seller.Name as Seller_name, Seller.Address FROM `Stall` inner join `Seller` on `Stall`.`Seller_id` = `Seller`.`id` Where `Stall`.`Name`='$Stall_Name'";
                             $result = mysqli_query($conn, $sql);
                             $data = mysqli_fetch_array($result);
@@ -152,7 +163,6 @@ echo $User_name=$data_user['Name'];
                                 <tbody>
 
                                     <?php
-                                    require_once('Connection.php');
                                     $sql_cat = "SELECT * FROM Category";
                                     $result_cat = mysqli_query($conn, $sql_cat);
                                     $Date = Date('d/M/Y');
@@ -210,7 +220,9 @@ echo $User_name=$data_user['Name'];
                                     <?php echo $Date ?>
                                 </p>
                             </div>
-                            <p>Checked By: <?php echo $User_name=$data_user['Name'];?> </p>
+                            <p>Checked By:
+                                <?php echo $User_name = $data_user['Name']; ?>
+                            </p>
 
                         </div>
                     </div>

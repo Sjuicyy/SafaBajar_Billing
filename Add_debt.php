@@ -13,7 +13,7 @@ $sql_user = "SELECT `Admin`.`Name`,`Admin`.`Id` FROM `Admin` WHERE `Admin`.`Emai
 $result_user = mysqli_query($conn, $sql_user);
 $data_user = mysqli_fetch_array($result_user);
 
-$User_id=$data_user['Id'];
+$User_id = $data_user['Id'];
 
 
 
@@ -35,14 +35,14 @@ while ($data_stall = mysqli_fetch_array($result_stall)) {
         $result1 = mysqli_query($conn, $sql1);
         $data1 = mysqli_fetch_assoc($result1);
         if ($data1['Rate'] == !null) {
-             $data1['Rate'];
+            $data1['Rate'];
             $sum = $sum + $data1['Rate'];
         }
     }
-    $Remarks='Rent-'.$data_stall['Name'];
+    $Remarks = 'Rent-' . $data_stall['Name'];
     $Seller_id = $data_stall['Seller_Id'];
     $sql2 = "INSERT INTO `Billing` (`Id`, `Seller_id`, `Amount`, `Debit`, `Remarks`, `Date`,`Admin_id`) VALUES (NULL, '$Seller_id', NULL , '$sum', '$Remarks' , CURRENT_TIMESTAMP,'$User_id');";
     $result2 = mysqli_query($conn, $sql2);
 }
-header('location:index.php' )
-?>
+header('location:index.php')
+    ?>
