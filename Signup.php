@@ -31,26 +31,45 @@
 </head>
 
 <body>
-    <h2 class="text-center mt-2">Log In</h2>
+    <h2 class="text-center mt-2">Sign UP</h2>
     <div class="signupform">
         <div class="logo text-center mb-3">
             <img src="img/logo.png" alt="Company Logo" width="250px">
         </div>
 
-        <form action="Login_check.php" method="POST">
+        <form action="Signup_check.php" method="POST" enctype='multipart/form-data'>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input required type="text" class="form-control" name="name" placeholder="Enter your name">
+            </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                <input required type="email" class="form-control" name="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="email">Contact</label>
+                <input required type="number" class="form-control" name="phone" placeholder="Enter your email">
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" placeholder="Enter your password">
+                <input required type="text" class="form-control" name="password" placeholder="Enter your password">
             </div>
-            <div class="text-center"><button type="submit" class="btn signup">Log In</button></div>
 
-            <p class="text-center mt-3">Don't have a account ? <a href="Signup.php">Sign Up</a></p>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input required type="text" class="form-control" name="address" placeholder="Enter your address">
+            </div>
+
+            <div class="form-group">
+                <label for="photo">Photo</label>
+                <input required type="file" accept=".jpg, .png, .jpeg" class="form-control" name="photo">
+            </div>
+
+            <div class="text-center"><button type="submit" class="btn signup">Sign Up</button></div>
         </form>
+        <p class="text-center">Already have a account ? <a href="Login.php">Log In</a></p>
+
     </div>
 
     <!-- Bootstrap JS (optional) -->
