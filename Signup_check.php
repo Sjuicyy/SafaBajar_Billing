@@ -1,17 +1,27 @@
 <?php
 require_once('Connection.php');
-echo $Name = ucwords($_POST['name']);
-echo $Email = $_POST['email'];
-echo $Phone = $_POST['phone'];
-echo $Password = $_POST['password'];
-echo $Address = ucwords($_POST['address']);
-// echo $Photo=$_FILES['photo']['name'];
+ $Name = ucwords($_POST['name']);
+ $Email = $_POST['email'];
+
+
+
+$sql_email="SELECT * From Admin WHERE Email = '$Email' ";
+$query=mysqli_query($conn,$sql_email);
+$result=mysqli_fetch_array($query);
+if ($result){
+    echo "Email Already Exists. Please try again with another Email !!!";
+}
+else{
+ $Phone = $_POST['phone'];
+ $Password = $_POST['password'];
+ $Address = ucwords($_POST['address']);
+//  $Photo=$_FILES['photo']['name'];
 
 $FilePhoto = $_FILES['photo'];
 $FilePhoto["name"] = mt_rand(1, 100000000000000000) . ".jpg"; //Rename name of received file
-echo $Photo = $FilePhoto["name"]; // Assigned new file name to variable
+ $Photo = $FilePhoto["name"]; // Assigned new file name to variable
 
-echo $AdminFolder = "./AgentPics/" . basename($Photo);
+ $AdminFolder = "./AgentPics/" . basename($Photo);
 if (move_uploaded_file($_FILES['photo']['tmp_name'], $AdminFolder)) {
     echo "<script>alert('New Agent Added !');</script>";
 } else {
@@ -28,6 +38,6 @@ header('Location:Login.php');
 
 
 
-
+}
 
 ?>

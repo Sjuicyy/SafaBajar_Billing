@@ -1,10 +1,23 @@
-
 <?php
 session_start();
-if(!($_SESSION['Email'])){
+if (!($User_Email = $_SESSION['Email'])) {
     header('Location:Login.php');
 }
 ?>
+
+
+
+
+
+<?php
+require_once("Connection.php");
+$sql_user = "SELECT `Admin`.`Name` FROM `Admin` WHERE `Admin`.`Email`= '$User_Email' ";
+$result_user = mysqli_query($conn, $sql_user);
+$data_user = mysqli_fetch_array($result_user);
+echo $User_name=$data_user['Name'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +90,7 @@ if(!($_SESSION['Email'])){
         </div>
         <div class="row">
             <?php
-            $i=001;
+            $i = 001;
             require_once("Connection.php");
             $sql_stall = "SELECT DISTINCT Stall.Name FROM `Stall` ";
             $result_stall = mysqli_query($conn, $sql_stall);
@@ -96,11 +109,11 @@ if(!($_SESSION['Email'])){
                             $result = mysqli_query($conn, $sql);
                             $data = mysqli_fetch_array($result);
                             // echo $data['Type'];
-                            
+                        
                             ?>
 
                             <div class="col-md-8 text-right">
-                                <p class='font-weight-bold'>Bill No. 
+                                <p class='font-weight-bold'>Bill No.
                                     <?php echo $i++ ?>
 
                                 </p>
@@ -197,6 +210,8 @@ if(!($_SESSION['Email'])){
                                     <?php echo $Date ?>
                                 </p>
                             </div>
+                            <p>Checked By: <?php echo $User_name=$data_user['Name'];?> </p>
+
                         </div>
                     </div>
                 </div>
