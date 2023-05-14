@@ -138,8 +138,8 @@ if(!($_SESSION['Email'])){
                                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                                     aria-expanded="false"><i class="fa-solid fa-user fa-lg"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Menu</a>
-                                    <a class="dropdown-item" href="#">Add Catagories</a>
+                                    <a class="dropdown-item" href="Admin.php">View Profile</a>
+                                    
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="Logout.php">LogOut</a>
                                 </div>
