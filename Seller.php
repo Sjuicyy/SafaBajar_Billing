@@ -217,10 +217,10 @@ if(!($_SESSION['Email'])){
                                                     data-target="#Profile_detail<?php echo $data["Id"] ?>"><i class="fa-solid fa-user"></i></button>
 
 
-                                                <!--  <a class="disabled" href="Delete_user.php?id=<?php echo $data["Id"] ?>">
-                                                    <button class="btn btn-danger disabled">Delete</button>
-                                                </a> -->
-                                                <!-- <button class="btn btn-danger btn-sm disabled">Delete</button> -->
+                                                 <a href="Delete_user.php?id=<?php echo $data["Id"] ?>">
+                                                    <button class="btn btn-danger ">Delete</button>
+                                                </a> 
+                                      
                                             </td>
                                         </tr>
                                     </tbody>

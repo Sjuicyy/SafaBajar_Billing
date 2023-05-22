@@ -375,6 +375,15 @@ if(!($_SESSION['Email'])){
                                                                     }
                                                                     ?>
                                                                 </select>
+
+
+                                                                <div class="md-form">
+                                                                <label data-error="wrong" data-success="right"
+                                                                    for="catName">Advance</label>
+                                                                <input type="number" id="catName" value='0'
+                                                                    class="form-control" name="advance" >
+                                                            </div>
+
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer d-flex justify-content-center">
