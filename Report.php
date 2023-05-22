@@ -17,8 +17,7 @@ $User_name = $data_user['Name'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <style>
         .body-main {
             background: #ffffff;
@@ -74,40 +73,82 @@ $User_name = $data_user['Name'];
     $result_date = mysqli_query($conn, $sql_date);
     $Data_date = mysqli_fetch_array($result_date);
 
-    $Last_Date = ($Data_date['Date']); // last date from database
-    $Current_Date = (date("Y-m-d H:i:s")); // Current date 
-    
-    $Last_yearmonth = strtotime(substr($Last_Date, 0, 7)); // keeeping year and month and removing date time second etc from date
-    $Current_yearmonth = strtotime(substr($Current_Date, 0, 7)); // keeeping year and month and removing date time second etc from date
-    
-    $diff_in_months = ($Current_yearmonth - $Last_yearmonth) / (30 * 24 * 60 * 60);
-    if ($diff_in_months < 1) {
+    $Last_Date = ($Data_date['Date']);
+
+    $last_date_yearmonth = date('Y-m', strtotime($Last_Date)); //only year and month of last submitted date and converted to string
+    $last_date_converted = strtotime($last_date_yearmonth);
+
+
+
+    $current_date = date("Y-m"); //only year and month of current date
+    $current_date_converted = strtotime($current_date);
+
+    $diff_in_months = $current_date_converted - $last_date_converted;
+
+
+
+
+    if ($diff_in_months == 0) {
         $hidden = true;
     } else {
         $hidden = false;
     }
-    // ?>
 
 
-    <div class="container">
+
+
+    $today = new DateTime();
+    $last_day_of_month = new DateTime('last day of this month');
+    $rem_days = $last_day_of_month->diff($today)->format('%a days left');
+    ?>
+
+
+
+
+    <button class="btn btn-lg">
+        <?php echo $last_date_converted ?>
+    </button>
+    <button class="btn btn-lg">
+        <?php echo $current_date_converted ?>
+    </button>
+    <button class="btn btn-lg">
+        <?php echo $current_converted_year ?>
+    </button>
+
+    <div class="container ">
         <div class="d-flex justify-content-around ">
             <div></div>
-            <button class="btn btn-lg font-weight-bold btn-warning btn-primary mt-3" id="printBtn">Print</button>
-            <a href="Add_debt.php" class="<?php if ($hidden == true) {
-                echo 'd-none';
-            } ?> ">
-                <button class="btn btn-lg text-dark font-weight-bold btn-success btn-primary mt-3 ">Finish</button>
+            <button class="btn btn-lg h-50 font-weight-bold btn-warning btn-primary mt-3 " id="printBtn">Print</button>
+
+
+            <a href="Add_debt.php" class="btn  <?php echo $hidden == true ? 'disabled' : '' ?> ">
+                <button class="btn btn-lg text-dark font-weight-bold btn-success btn-primary mt-3  ">Finish</button>
+                <?php echo $hidden == true ? '<p>'.  $rem_days .'</p>' : '' ?>
             </a>
 
 
+            
         </div>
+       
+
+
+
         <div class="row">
             <?php
+            $safabajar_sql = "SELECT Seller.id FROM `Seller` where  Seller.Name='Safabajar Pvt. Ltd.' ";
+            $safabajar_result = mysqli_query($conn, $safabajar_sql);
+            $safabajar_data = mysqli_fetch_array($safabajar_result);
+            $safabajar_id = $safabajar_data[0];
+
+
+
+
+
             $i = 001;
-            $sql_stall = "SELECT DISTINCT Stall.Name FROM `Stall` ";
+            $sql_stall = "SELECT DISTINCT Stall.Name FROM `Stall` WHERE Seller_id <>'$safabajar_id' ";
             $result_stall = mysqli_query($conn, $sql_stall);
             while ($data_stall = mysqli_fetch_array($result_stall)) {
-                ?>
+            ?>
                 <div class="col-md-5 col-md-offset-3 mx-2 body-main invoice">
                     <div class="col-md-12">
                         <div class="row">
@@ -120,7 +161,7 @@ $User_name = $data_user['Name'];
                             $result = mysqli_query($conn, $sql);
                             $data = mysqli_fetch_array($result);
                             // echo $data['Type'];
-                        
+
                             ?>
 
                             <div class="col-md-8 text-right">
@@ -169,7 +210,7 @@ $User_name = $data_user['Name'];
                                     $sum = 0;
                                     while ($data_cat = mysqli_fetch_assoc($result_cat)) {
                                         $Category = $data_cat['Title'];
-                                        ?>
+                                    ?>
                                         <tr>
                                             <td class="col-md-9">
                                                 <?php echo $data_cat['Title']; ?>
@@ -183,33 +224,31 @@ $User_name = $data_user['Name'];
                                                 <?php if ($data1['Rate'] == !null) {
                                                     echo $data1['Rate'];
                                                     $sum = $sum + $data1['Rate'];
-
                                                 } else {
                                                     echo 0;
                                                 }
                                                 ?>
                                             </td>
-                                            <?php
+                                        <?php
                                     }
-                                    ?>
-                                    </tr>
+                                        ?>
+                                        </tr>
 
 
-                                    <tr>
-                                        <td class="text-right">
-                                            <p>
-                                                <strong style="font-size: x-large;">Total Amount: </strong>
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p>
-                                                <strong style="font-size: x-large;"><i class="fas fa-rupee-sign"
-                                                        area-hidden="true"></i>
-                                                    <?php echo $sum ?>
-                                                </strong>
-                                            </p>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td class="text-right">
+                                                <p>
+                                                    <strong style="font-size: x-large;">Total Amount: </strong>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p>
+                                                    <strong style="font-size: x-large;"><i class="fas fa-rupee-sign" area-hidden="true"></i>
+                                                        <?php echo $sum ?>
+                                                    </strong>
+                                                </p>
+                                            </td>
+                                        </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -227,7 +266,7 @@ $User_name = $data_user['Name'];
                         </div>
                     </div>
                 </div>
-                <?php
+            <?php
             }
             ?>
         </div>
@@ -236,16 +275,12 @@ $User_name = $data_user['Name'];
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script>
-        $(document).ready(function () {
-            $('#printBtn').on('click', function () {
+        $(document).ready(function() {
+            $('#printBtn').on('click', function() {
                 window.print();
             });
         });

@@ -59,7 +59,7 @@ if(!($_SESSION['Email'])){
                     <a href="Category.php"><i class="fa fa-list"></i> Category</a>
                 </li>
                 <li>
-                    <a href="seller.php"><i class="fa fa-users"></i> Seller</a>
+                    <a href="Seller.php"><i class="fa fa-users"></i> Seller</a>
                 </li>
                 <li>
                     <a href="Bill_entry.php"> <i class="fa fa-file-invoice-dollar"></i> Billing</a>

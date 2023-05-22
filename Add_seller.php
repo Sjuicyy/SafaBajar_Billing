@@ -12,7 +12,7 @@ $Photo = $FilePhoto["name"];  // Assigned new file name to variable
 
 
 
-$SellerFolder = "./SellerPhotos/" . basename($Photo);
+$SellerFolder = "SellerPhotos/" . basename($Photo);
 if (move_uploaded_file($_FILES['Photo']['tmp_name'], $SellerFolder)) {
     echo "<script>alert('New Agent Added !');</script>";
 } else {
@@ -31,7 +31,7 @@ $Citizenship = $FileCitizen["name"];  // Assigned new file name to variable
 
 
 
-$CitizenFolder = "./Citizenship/" . basename($Citizenship);   //Full folder address with folder name and name of file
+$CitizenFolder = "Citizenship/" . basename($Citizenship);   //Full folder address with folder name and name of file
 if (move_uploaded_file($_FILES['Citizenship']['tmp_name'], $CitizenFolder)) {
     echo "<script>alert('New Agent Added !');</script>";
 } else {

@@ -7,7 +7,7 @@ $Photo_sql = "SELECT Photo FROM Seller WHERE id='$Id'";
 $Photo_result = mysqli_query($conn, $Photo_sql);
 $data = mysqli_fetch_assoc($Photo_result);
 $SellerPic = $data['Photo'];
-unlink("./SellerPhotos/$SellerPic");
+unlink("SellerPhotos/$SellerPic");
 
 
 
@@ -16,7 +16,7 @@ $Citizen_sql = "SELECT Citizenship FROM Seller WHERE id='$Id' ";
 $Citizen_result = mysqli_query($conn, $Citizen_sql);
 $data = mysqli_fetch_assoc($Citizen_result);
 $CitizenPic = $data['Citizenship'];
-unlink("./Citizenship/$CitizenPic");
+unlink("Citizenship/$CitizenPic");
 
 
 // TO DELEtE DATA FORM DATABASE

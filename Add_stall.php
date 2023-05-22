@@ -46,6 +46,7 @@ if ($result->num_rows > 0) {
         mysqli_query($conn, $sql);
     }
 
+    header("Location:Stall.php");
 
 
 } else {
@@ -56,6 +57,11 @@ if ($result->num_rows > 0) {
 
     $sql = "INSERT INTO `Stall` (`Id`, `Name`, `Seller_id`,`Type`, `Category`, `Rate`) VALUES (NULL, '$Name', '$Seller','$Type',NULL, NULL)";
     mysqli_query($conn, $sql);
+    Location("header:Stall.php");
+
 }
+
+
+header("Location:Stall.php");
 
 ?>
