@@ -84,36 +84,15 @@ $User_name = $data_user['Name'];
     $current_date_converted = strtotime($current_date);
 
     $diff_in_months = $current_date_converted - $last_date_converted;
-
-
-
-
     if ($diff_in_months == 0) {
         $hidden = true;
     } else {
         $hidden = false;
     }
-
-
-
-
     $today = new DateTime();
     $last_day_of_month = new DateTime('last day of this month');
     $rem_days = $last_day_of_month->diff($today)->format('%a days left');
     ?>
-
-
-
-
-    <button class="btn btn-lg">
-        <?php echo $last_date_converted ?>
-    </button>
-    <button class="btn btn-lg">
-        <?php echo $current_date_converted ?>
-    </button>
-    <button class="btn btn-lg">
-        <?php echo $current_converted_year ?>
-    </button>
 
     <div class="container ">
         <div class="d-flex justify-content-around ">
@@ -125,25 +104,13 @@ $User_name = $data_user['Name'];
                 <button class="btn btn-lg text-dark font-weight-bold btn-success btn-primary mt-3  ">Finish</button>
                 <?php echo $hidden == true ? '<p>'.  $rem_days .'</p>' : '' ?>
             </a>
-
-
-            
         </div>
-       
-
-
-
         <div class="row">
             <?php
             $safabajar_sql = "SELECT Seller.id FROM `Seller` where  Seller.Name='Safabajar Pvt. Ltd.' ";
             $safabajar_result = mysqli_query($conn, $safabajar_sql);
             $safabajar_data = mysqli_fetch_array($safabajar_result);
             $safabajar_id = $safabajar_data[0];
-
-
-
-
-
             $i = 001;
             $sql_stall = "SELECT DISTINCT Stall.Name FROM `Stall` WHERE Seller_id <>'$safabajar_id' ";
             $result_stall = mysqli_query($conn, $sql_stall);
