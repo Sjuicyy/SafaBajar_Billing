@@ -203,14 +203,14 @@ if(!($_SESSION['Email'])){
 
 
                                                 <button type="submit" class="btn btn-sm btn-warning" data-toggle="modal"
-                                                    data-toggle="tooltip" data-target='#addmodal<?php echo $data["Id"] ?>'
+                                                     data-target='#addmodal<?php echo $data["Id"] ?>'
                                                     title="Edit"><i class="fa-solid fa-pen-to-square fa-lg"></i></button>
 
 
 
                                                 <a href="Seller_report.php?id=<?php echo $data["Id"] ?>">
                                                     <button type="submit" class="btn btn-sm mx-1 btn-primary"
-                                                        data-toggle="tooltip" title="Report"><i
+                                                         title="Report"><i
                                                             class="fa-sharp fa-solid fa-file-lines  fa-lg"></i></button>
                                                 </a>
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"

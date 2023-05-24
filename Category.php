@@ -141,7 +141,7 @@ if(!($_SESSION['Email'])){
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>y
+                            <tbody>
                                 <?php
                                 require_once 'Connection.php';
                                 $sql = "SELECT * from Category";

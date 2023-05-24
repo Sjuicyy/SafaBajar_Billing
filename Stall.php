@@ -1,6 +1,7 @@
 <?php
+require_once("Connection.php");
 session_start();
-if(!($_SESSION['Email'])){
+if (!($_SESSION['Email'])) {
     header('Location:Login.php');
 }
 ?>
@@ -15,17 +16,13 @@ if(!($_SESSION['Email'])){
     <title>Safabazar</title>
 
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <!-- Font Awesone -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
         integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
@@ -81,9 +78,7 @@ if(!($_SESSION['Email'])){
                         <i class="fas fa-arrow-right"></i>
                         <span></span>
                     </button>
-                    <button class="btn navtoggle d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="btn navtoggle d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
 
@@ -93,11 +88,10 @@ if(!($_SESSION['Email'])){
                                 <a class="nav-link text-dark h4" href="Index.php">Home</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                                    aria-expanded="false"><i class="fa-solid fa-user fa-lg"></i></a>
+                                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-user fa-lg"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" href="Admin.php">View Profile</a>
-                                    
+
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="Logout.php">LogOut</a>
                                 </div>
@@ -111,8 +105,7 @@ if(!($_SESSION['Email'])){
                     <div class="col-lg-8 col-md-12 col-sm-12 ">
                         <div class="row mb-3 d-flex justify-content-between">
                             <h2 class="cath2">Stalls</h2>
-                            <button class="btn btn-success" data-toggle="modal" data-target="#addmodal"><i
-                                    class="fa fa-circle-plus fa-1x"></i> Add</button>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#addmodal"><i class="fa fa-circle-plus fa-1x"></i> Add</button>
 
                         </div>
                         <table id="myTable" class="text-center">
@@ -128,7 +121,6 @@ if(!($_SESSION['Email'])){
                             </thead>
                             <tbody>
                                 <?php
-                                require_once("Connection.php");
                                 $sql = "SELECT DISTINCT  Stall.Type, Stall.Name ,Stall.Seller_id,Seller.Name as Seller_name FROM `Stall`  inner join `Seller` on `Stall`.`Seller_id` = `Seller`.`id`";
                                 $result = mysqli_query($conn, $sql);
 
@@ -136,7 +128,7 @@ if(!($_SESSION['Email'])){
                                     while ($data = mysqli_fetch_array($result)) {
                                         $Stall_Name = $data['Name'];
                                         $i++;
-                                        ?>
+                                ?>
                                         <tr>
                                             <th>
                                                 <?php echo $i ?>
@@ -151,25 +143,15 @@ if(!($_SESSION['Email'])){
                                                 <?php echo $data["Type"] ?>
                                             </td>
                                             <td class="d-flex justify-content-end">
-                                                <button type="submit" data-toggle="modal"
-                                                    data-target="#editStall<?php echo $data["Name"] ?>"
-                                                    class="btn btn-sm mx-1 btn-success" data-toggle="tooltip" title="Edit"><i
-                                                        class="fa-solid fa-pen-to-square  fa-lg"></i></button>
+                                                <button type="submit" data-toggle="modal" data-target="#editStall<?php echo $data["Name"] ?>" class="btn btn-sm mx-1 btn-success"  title="Edit"><i class="fa-solid fa-pen-to-square  fa-lg"></i></button>
 
-                                                <button type="submit" data-toggle="modal"
-                                                    data-target="#transferModal<?php echo $data["Name"] ?>"
-                                                    class="btn btn-sm mx-1 btn-warning" data-toggle="tooltip"
-                                                    title="Transfer"><i
-                                                        class="fa-solid fa-arrow-right-arrow-left  fa-lg"></i></button>
+                                                <button type="submit" data-toggle="modal" data-target="#transferModal<?php echo $data["Name"] ?>" class="btn btn-sm mx-1 btn-warning"  title="Transfer"><i class="fa-solid fa-arrow-right-arrow-left  fa-lg"></i></button>
                                                 <a href="Stall_bill.php?id=<?php echo $data["Name"] ?>">
-                                                    <button type="submit" class="btn btn-sm mx-1 btn-primary"
-                                                        data-toggle="tooltip" title="Report"><i
-                                                            class="fa-sharp fa-solid fa-file-lines  fa-lg"></i></button>
+                                                    <button type="submit" class="btn btn-sm mx-1 btn-primary"  title="Report"><i class="fa-sharp fa-solid fa-file-lines  fa-lg"></i></button>
                                                 </a>
                                             </td>
                                             <td>
-                                                <button class="btn btn-sm btn-primary" data-toggle="modal"
-                                                    data-target="#showCategory<?php echo $data["Name"] ?>">View</button>
+                                                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#showCategory<?php echo $data["Name"] ?>">View</button>
                                             </td>
                                         </tr>
 
@@ -177,8 +159,7 @@ if(!($_SESSION['Email'])){
 
 
                                         <!-- Category view modal  Start-->
-                                        <div class="modal fade" id="showCategory<?php echo $data["Name"] ?>" tabindex="-1"
-                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="showCategory<?php echo $data["Name"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog " role="document">
                                                 <div class="modal-content">
 
@@ -191,8 +172,7 @@ if(!($_SESSION['Email'])){
                                                                 <?php echo $data['Seller_name'] ?>
                                                             </h6>
                                                         </div>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
@@ -208,13 +188,11 @@ if(!($_SESSION['Email'])){
                                                         $result_cat = mysqli_query($conn, $sql_cat);
                                                         while ($data_cat = mysqli_fetch_assoc($result_cat)) {
                                                             $Category = $data_cat['Title'];
-                                                            ?>
-                                                            <div
-                                                                class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
+                                                        ?>
+                                                            <div class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
                                                                 <?php echo $data_cat['Title']; ?>
                                                             </div>
-                                                            <div
-                                                                class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
+                                                            <div class="col-6 border border-top-0 border-right-0 border-left-0 border-secondary my-2">
                                                                 <?php
                                                                 $sql1 = "SELECT * FROM `Stall` WHERE `Name`='$Stall_Name' AND `Category`='$Category'";
                                                                 $result1 = mysqli_query($conn, $sql1);
@@ -224,11 +202,10 @@ if(!($_SESSION['Email'])){
                                                                     echo " <div class='d-flex'><p class='h6 d-flex mx-1 text-center'> Rs. </p>" . "<p class='h6 text-center'>" . $data1['Rate'] . "</p> </div> ";
                                                                 } else {
                                                                     echo " <div class='d-flex'><p class='h6 d-flex mx-1 text-center'> Rs. </p>" . "<p class='h6 text-center'>" . 0 . "</p> </div> ";
-
                                                                 }
                                                                 ?>
                                                             </div>
-                                                            <?php
+                                                        <?php
                                                         }
                                                         ?>
                                                     </div>
@@ -244,8 +221,7 @@ if(!($_SESSION['Email'])){
 
                                         <!-- Stall Edit  modal  Start -->
 
-                                        <div class="modal fade" id="editStall<?php echo $data["Name"] ?>" tabindex="-1"
-                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="editStall<?php echo $data["Name"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog " role="document">
                                                 <div class="modal-content">
 
@@ -259,14 +235,11 @@ if(!($_SESSION['Email'])){
                                                                 <?php echo $data['Seller_name'] ?>
                                                             </h6>
                                                         </div>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form
-                                                        action="Edit_stall.php?id=<?php echo $data['Name'] ?>&S_id=<?php echo $data["Seller_id"] ?>&type=<?php echo $data["Type"] ?>"
-                                                        method="POST">
+                                                    <form action="Edit_stall.php?id=<?php echo $data['Name'] ?>&S_id=<?php echo $data["Seller_id"] ?>&type=<?php echo $data["Type"] ?>" method="POST">
 
                                                         <div class="row  px-5 ">
                                                             <div class="col-6 my-1 bg-secondary ">
@@ -280,7 +253,7 @@ if(!($_SESSION['Email'])){
                                                             $result_cat = mysqli_query($conn, $sql_cat);
                                                             while ($data_cat = mysqli_fetch_assoc($result_cat)) {
                                                                 $Category = $data_cat['Title'];
-                                                                ?>
+                                                            ?>
                                                                 <div class="col-6 my-2">
                                                                     <?php echo $data_cat['Title']; ?>
                                                                 </div>
@@ -298,7 +271,7 @@ if(!($_SESSION['Email'])){
                                                                     }
                                                                     ?>
                                                                 </div>
-                                                                <?php
+                                                            <?php
                                                             }
                                                             ?>
                                                         </div>
@@ -320,16 +293,14 @@ if(!($_SESSION['Email'])){
 
 
 
-                                        <div class="modal fade" id="transferModal<?php echo $data["Name"] ?>" tabindex="-1"
-                                            role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="transferModal<?php echo $data["Name"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="d-flex border ">
 
                                                         <h4 class="modal-title text-center mt-2 w-100 font-weight-bold">Transfer
                                                             Stall</h4>
-                                                        <button type="button" class="close mx-2" data-dismiss="modal"
-                                                            aria-label="Close">
+                                                        <button type="button" class="close mx-2" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
@@ -348,29 +319,24 @@ if(!($_SESSION['Email'])){
                                                     <form action="Stall_transfer.php" method="POST">
                                                         <div class="modal-body mx-3">
                                                             <div class="md-form">
-                                                                <label data-error="wrong" data-success="right"
-                                                                    for="catName">Current
+                                                                <label data-error="wrong" data-success="right" for="catName">Current
                                                                     Owner: </label>
-                                                                <input type="text" id="catName"
-                                                                    value="<?php echo $data['Seller_name'] ?>"
-                                                                    class="form-control" name="CatagoryName" disabled>
+                                                                <input type="text" id="catName" value="<?php echo $data['Seller_name'] ?>" class="form-control" name="CatagoryName" disabled>
                                                             </div>
                                                             <div class="md-form">
                                                                 <label data-error="wrong" data-success="right" for="catName">New
                                                                     Owner </label>
-                                                                <input type="hidden" value="<?php echo $data['Name'] ?>"
-                                                                    name="Stall_name">
-                                                                <select id="multiple-checkboxes" class="w-100 custom-select"
-                                                                    name="New_owner">
+                                                                <input type="hidden" value="<?php echo $data['Name'] ?>" name="Stall_name">
+                                                                <select id="multiple-checkboxes" class="w-100 custom-select" name="New_owner">
                                                                     <?php
                                                                     $sql0 = "select * from Seller";
                                                                     $result0 = mysqli_query($conn, $sql0);
                                                                     if ($result0->num_rows > 0) {
                                                                         while ($data0 = mysqli_fetch_array($result0)) {
-                                                                            ?>
+                                                                    ?>
                                                                             <option value="<?php echo $data0["Id"] ?>"> <?php echo $data0["Name"] . " (" . $data0["Contact"] . ")" ?>
                                                                             </option>
-                                                                            <?php
+                                                                    <?php
                                                                         }
                                                                     }
                                                                     ?>
@@ -378,11 +344,9 @@ if(!($_SESSION['Email'])){
 
 
                                                                 <div class="md-form">
-                                                                <label data-error="wrong" data-success="right"
-                                                                    for="catName">Advance</label>
-                                                                <input type="number" id="catName" value='0'
-                                                                    class="form-control" name="advance" >
-                                                            </div>
+                                                                    <label data-error="wrong" data-success="right" for="catName">Advance</label>
+                                                                    <input type="number" id="catName" value='0' class="form-control" name="advance">
+                                                                </div>
 
                                                             </div>
                                                         </div>
@@ -398,7 +362,7 @@ if(!($_SESSION['Email'])){
                                             </div>
                                         </div>
                                         <!-- Transfer modal  end -->
-                                        <?php
+                                <?php
                                     }
                                 }
                                 ?>
@@ -408,8 +372,7 @@ if(!($_SESSION['Email'])){
                 </div>
             </div>
             <!--Add Stall modal start -->
-            <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <form method="POST" action="Add_stall.php" class="modal-content">
                         <div class="modal-header text-center">
@@ -424,97 +387,84 @@ if(!($_SESSION['Email'])){
                                 <input type="text" id="catName" class="form-control" name="Stall_name">
                             </div>
                             <label class="d-block mt-3 mb-0" for="select-options">Select Catagories:</label>
-
                             <div class="dropdown">
-                                <input role="button" type="text" id="selected-options"
-                                    class="form-control custom-select btn dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false" readonly />
+                                <input role="button" type="text" id="selected-options" class="form-control custom-select btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" readonly />
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item dropa" href="#">
-                                        <div> <input id="Rent" type="checkbox" name="CRent" class="option-checkbox"
-                                                value="Rent" />
+
+                                    <?php
+                                    $cat_sql = "SELECT * FROM Category";
+                                    $query = mysqli_query($conn, $cat_sql);
+                                    $i=0;
+                                    while ($cat_result = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <a class="dropdown-item dropa" href="#">
+                                            <div> <input id="Rent" type="checkbox" class="option-checkbox"/>
+                                                <label for="Rent" class="dlabel"><?php echo $cat_result['Title'] ?></label>
+                                            </div>
+                                            <div> <input type="number" name="<?php echo 'rate'.$i ?>" value="0" class="form-control form-control-sm option-input" />
+                                            </div>
+                                        </a>
+                                  
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <!--
+                                     <a class="dropdown-item dropa" href="#">
+                                        <div> <input id="Rent" type="checkbox" name="CRent" class="option-checkbox" value="Rent" />
                                             <label for="Rent" class="dlabel">Rent</label>
                                         </div>
-                                        <div> <input type="number" name="Rent" 
-                                                class="form-control form-control-sm option-input" />
+                                        <div> <input type="number" name="Rent" class="form-control form-control-sm option-input" />
                                         </div>
                                     </a>
 
                                     <a class="dropdown-item dropa" href="#">
-                                        <div> <input id="Water" type="checkbox" name="CWater" class="option-checkbox"
-                                                value="Water" />
+                                        <div> <input id="Water" type="checkbox" name="CWater" class="option-checkbox" value="Water" />
                                             <label for="Water" class="dlabel">Water</label>
                                         </div>
-                                        <div> <input type="number" name="Water" 
-                                                class="form-control form-control-sm option-input" />
+                                        <div> <input type="number" name="Water" class="form-control form-control-sm option-input" />
                                         </div>
                                     </a>
 
                                     <a class="dropdown-item dropa" href="#">
-                                        <div> <input id="Electricity" type="checkbox" name="CElectricity"
-                                                class="option-checkbox" value="Electricity" />
+                                        <div> <input id="Electricity" type="checkbox" name="CElectricity" class="option-checkbox" value="Electricity" />
                                             <label for="Rent" class="dlabel">Electricity</label>
                                         </div>
-                                        <div> <input type="number" name="Electricity" 
-                                                class="form-control form-control-sm option-input" />
+                                        <div> <input type="number" name="Electricity" class="form-control form-control-sm option-input" />
                                         </div>
                                     </a>
 
                                     <a class="dropdown-item dropa" href="#">
-                                        <div> <input id="Waste" type="checkbox" name="CWaste" class="option-checkbox"
-                                                value="Waste" />
+                                        <div> <input id="Waste" type="checkbox" name="CWaste" class="option-checkbox" value="Waste" />
                                             <label for="Waste" class="dlabel">Waste</label>
                                         </div>
-                                        <div> <input type="number" name="Waste" 
-                                                class="form-control form-control-sm option-input" />
+                                        <div> <input type="number" name="Waste" class="form-control form-control-sm option-input" />
                                         </div>
                                     </a>
 
                                     <a class="dropdown-item dropa" href="#">
-                                        <div> <input id="Security" type="checkbox" name="CSecurity"
-                                                class="option-checkbox" value="Security" />
+                                        <div> <input id="Security" type="checkbox" name="CSecurity" class="option-checkbox" value="Security" />
                                             <label for="Security" class="dlabel">Security</label>
                                         </div>
-                                        <div> <input type="number" name="Security" 
-                                                class="form-control form-control-sm option-input" />
+                                        <div> <input type="number" name="Security" class="form-control form-control-sm option-input" />
                                         </div>
                                     </a>
+ -->
                                 </div>
                             </div>
-                            <!-- 
-
-                            <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
-                                <div>
-                                    <strong class="sl d-block">Select Catagories:</strong>
-                                    <select name="Category[]" id="multiple-checkboxes" multiple>
-                                        <option value="Rent">Rent</option>
-                                        <option value="Water">Water</option>
-                                        <option value="Electricity">Electricity</option>
-                                        <option value="Waste">Waste</option>
-                                        <option value="Security">Security</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <input type="text" name="Rent" value=""> Rent <br>
-                            <input type="text" name="Water" value="" /> Water <br>
-                            <input type="text" name="Electrical" value="" /> electrical <br>
-                            <input type="text" name="Waste" value="" /> waste <br>
-                            <input type="text" name="Security" value="" /> security <br> -->
                             <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
                                 <strong class="sl d-block">Select Seller:</strong>
                                 <select id="multiple-checkboxes" class="w-100 form-control" name="Seller_id">
                                     <?php
-                                    require_once("Connection.php");
                                     $sql = "select * from Seller";
                                     $result = mysqli_query($conn, $sql);
                                     if ($result->num_rows > 0) {
                                         while ($data = mysqli_fetch_array($result)) {
-                                            ?>
+                                    ?>
                                             <option value="<?php echo $data["Id"] ?>">
                                                 <?php echo $data["Name"] . " (" . $data["Contact"] . ")" ?>
                                             </option>
-                                            <?php
+                                    <?php
                                         }
                                     }
                                     ?>
@@ -542,17 +492,17 @@ if(!($_SESSION['Email'])){
             <!-- modal end -->
         </div>
         <div class="overlay"></div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-            integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
         <script>
-            $(document).ready(function () {
+            $(document).ready(function() {
                 $('#myTable').DataTable({
                     scrollY: '390px',
                     scrollCollapse: true,
                     paging: false,
-                    "order": [[1, "asc"]],
+                    "order": [
+                        [1, "asc"]
+                    ],
                     "columnDefs": [{
                         "targets": [0, 2],
                         "orderable": false
@@ -568,15 +518,10 @@ if(!($_SESSION['Email'])){
                 });
             });
         </script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <!-- jQuery Custom Scroller CDN -->
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="js/bootstrap-multiselect.js"></script>
         <script src="script.js"></script>
 
