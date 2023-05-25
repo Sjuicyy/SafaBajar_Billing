@@ -1,6 +1,9 @@
+
 <?php
 require_once('Connection.php');
 
+
+// print_r($_POST);
 
 $Name = ucwords($_POST['Stall_name']);
 $Seller = ($_POST['Seller_id']);
@@ -14,16 +17,15 @@ while ($cat_result = mysqli_fetch_assoc($query)) {
     $cat = $cat_result['Title'];
     array_push($all_cat, $cat); //getting each category title form database and pushing them into $all_cat array
 }
-
-$all_post = ($_POST); //keeping the arrray all post data in a variable
-unset($all_post['Stall_name'], $all_post['Seller_id'], $all_post['Type']); //removing other data from $_POST except rates
-$rate = array_values($all_post); //getting the array of all rate amount 
+$rate=$_POST['rate'];
 
 
 $sql = "select * from Stall where Name='$Name'";
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
-    echo "<h2> The Stall name '$Name' has already been created. You cannot create same stall twice.Please try again with a different stall name or go to stall page to edit the stall '$Name' </h2>";
+    echo "<h2> The Stall name '$Name' has already been created. You cannot create same stall twice.Please try again with a different stall name or go to stall page to edit the stall '$Name' </h2>
+    <a href='stall.php'>go back</a>
+    ";
 } else {
     $count = count($all_cat);
     for ($i = 0; $i < $count; $i++) {
@@ -34,5 +36,5 @@ if ($result->num_rows > 0) {
     header("Location:Stall.php");
     // echo"success";
 }
-header("Location:Stall.php");
+// header("Location:Stall.php");
 ?>

@@ -30,7 +30,34 @@ if (!($_SESSION['Email'])) {
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
+    <style>
+        .dropdown-menu .dropa {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .option-input {
+            display: none;
+            width: 60%;
+            float: right;
+        }
+
+        .option-input.show {
+            display: block;
+        }
+
+        #selected-options {
+            margin-top: 0.5rem;
+            text-align: left;
+        }
+
+        .dlabel {
+            margin: 0 0 0 0.3rem;
+        }
+    </style>
 
 <body>
     <div class="wrapper">
@@ -41,7 +68,7 @@ if (!($_SESSION['Email'])) {
             </div>
 
             <div class="sidebar-header">
-                <a href="" class="navbar-brand"><img src="img/logo.png" alt="Safabazar" width="" height="55"></a>
+                <a href="index.php" class="navbar-brand"><img src="img/logo.png" alt="Safabazar" width="" height="55"></a>
             </div>
 
             <ul class="list-unstyled components">
@@ -384,7 +411,7 @@ if (!($_SESSION['Email'])) {
                         <div class="modal-body mx-3">
                             <div class="md-form">
                                 <label data-error="wrong" data-success="right" for="catName">Stall Name: </label>
-                                <input type="text" id="catName" class="form-control" name="Stall_name">
+                                <input type="text" id="catName" class="form-control" name="Stall_name" >
                             </div>
                             <label class="d-block mt-3 mb-0" for="select-options">Select Catagories:</label>
                             <div class="dropdown">
@@ -397,65 +424,27 @@ if (!($_SESSION['Email'])) {
                                     $i=0;
                                     while ($cat_result = mysqli_fetch_array($query)) {
                                     ?>
+
                                         <a class="dropdown-item dropa" href="#">
-                                            <div> <input id="Rent" type="checkbox" class="option-checkbox"/>
+                                            <div> <input id="Rent" type="checkbox" value="<?php echo $cat_result['Title'] ?>" class="option-checkbox" />
                                                 <label for="Rent" class="dlabel"><?php echo $cat_result['Title'] ?></label>
                                             </div>
-                                            <div> <input type="number" name="<?php echo 'rate'.$i ?>" value="0" class="form-control form-control-sm option-input" />
+                                            <div> <input type="number" name="rate[]" value="" class="form-control form-control-sm option-input" />
                                             </div>
                                         </a>
-                                  
+
                                     <?php
                                     $i++;
                                     }
                                     ?>
-                                    <!--
-                                     <a class="dropdown-item dropa" href="#">
-                                        <div> <input id="Rent" type="checkbox" name="CRent" class="option-checkbox" value="Rent" />
-                                            <label for="Rent" class="dlabel">Rent</label>
-                                        </div>
-                                        <div> <input type="number" name="Rent" class="form-control form-control-sm option-input" />
-                                        </div>
-                                    </a>
-
-                                    <a class="dropdown-item dropa" href="#">
-                                        <div> <input id="Water" type="checkbox" name="CWater" class="option-checkbox" value="Water" />
-                                            <label for="Water" class="dlabel">Water</label>
-                                        </div>
-                                        <div> <input type="number" name="Water" class="form-control form-control-sm option-input" />
-                                        </div>
-                                    </a>
-
-                                    <a class="dropdown-item dropa" href="#">
-                                        <div> <input id="Electricity" type="checkbox" name="CElectricity" class="option-checkbox" value="Electricity" />
-                                            <label for="Rent" class="dlabel">Electricity</label>
-                                        </div>
-                                        <div> <input type="number" name="Electricity" class="form-control form-control-sm option-input" />
-                                        </div>
-                                    </a>
-
-                                    <a class="dropdown-item dropa" href="#">
-                                        <div> <input id="Waste" type="checkbox" name="CWaste" class="option-checkbox" value="Waste" />
-                                            <label for="Waste" class="dlabel">Waste</label>
-                                        </div>
-                                        <div> <input type="number" name="Waste" class="form-control form-control-sm option-input" />
-                                        </div>
-                                    </a>
-
-                                    <a class="dropdown-item dropa" href="#">
-                                        <div> <input id="Security" type="checkbox" name="CSecurity" class="option-checkbox" value="Security" />
-                                            <label for="Security" class="dlabel">Security</label>
-                                        </div>
-                                        <div> <input type="number" name="Security" class="form-control form-control-sm option-input" />
-                                        </div>
-                                    </a>
- -->
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-12 pl-0 mt-3 pr-0">
+
+                            <div class="searchselect col-md-12 col-lg-12 pl-0 mt-3 pr-0">
                                 <strong class="sl d-block">Select Seller:</strong>
-                                <select id="multiple-checkboxes" class="w-100 form-control" name="Seller_id">
+                                <select id="multiple-checkboxes" class="w-100 form-control" name="Seller_id" data-live-search="true">
                                     <?php
+                                    require_once("Connection.php");
                                     $sql = "select * from Seller";
                                     $result = mysqli_query($conn, $sql);
                                     if ($result->num_rows > 0) {
@@ -492,6 +481,7 @@ if (!($_SESSION['Email'])) {
             <!-- modal end -->
         </div>
         <div class="overlay"></div>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
         <script>
@@ -504,7 +494,7 @@ if (!($_SESSION['Email'])) {
                         [1, "asc"]
                     ],
                     "columnDefs": [{
-                        "targets": [0, 2],
+                        "targets": [0, 2, 3, 4, 5],
                         "orderable": false
                     }],
                     "language": {
@@ -517,12 +507,18 @@ if (!($_SESSION['Email'])) {
                     }
                 });
             });
+
+            $(document).ready(function() {
+                $('.searchselect select').selectpicker();
+            })
         </script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="js/bootstrap-multiselect.js"></script>
+        <!-- <script src="js/bootstrap-multiselect.js"></script> -->
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
         <script src="script.js"></script>
 
 </body>

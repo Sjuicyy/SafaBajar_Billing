@@ -81,7 +81,7 @@ if(!($_SESSION['Email'])){
             </div>
 
             <div class="sidebar-header">
-                <a href="" class="navbar-brand"><img src="img/logo.png" alt="Safabazar" width="" height="55"></a>
+                <a href="index.php" class="navbar-brand"><img src="img/logo.png" alt="Safabazar" width="" height="55"></a>
             </div>
 
             <ul class="list-unstyled components">

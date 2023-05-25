@@ -65,6 +65,11 @@ a:focus {
     color: white;
 }
 
+.nav .nav-item .nav-link::selection {
+    background-color: #6dbe45;
+    color: white !important;
+}
+
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -113,8 +118,8 @@ a:focus {
 .overlay {
     display: none;
     position: fixed;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: auto;
     background: rgba(0, 0, 0, 0.7);
     z-index: 998;
     opacity: 0;
